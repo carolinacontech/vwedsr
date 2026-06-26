@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RSVP Vikas & Roshni Wedding</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background-color: #f0ece0;
+    font-family: 'Montserrat', sans-serif;
+    min-height: 100vh;
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .container { max-width: 620px; width: 100%; }
+
+  .eyebrow {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #7a9e6a;
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-size: 3rem;
+    font-weight: 300;
+    color: #1e3320;
+    line-height: 1.05;
+    margin-bottom: 6px;
+    font-style: italic;
+  }
+
+  h1 strong {
+    font-weight: 600;
+    font-style: normal;
+  }
+
+  .subtitle {
+    font-size: 0.82rem;
+    color: #5a7a4a;
+    margin-bottom: 36px;
+    letter-spacing: 0.3px;
+  }
+
+  .deco {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  .deco-line { flex: 1; height: 1px; background: rgba(74,112,64,0.2); }
+  .deco-symbol { color: #7a9e6a; font-size: 1rem; }
+
+  .desc {
+    font-size: 0.88rem;
+    color: #3a5a2e;
+    line-height: 1.75;
+    margin-bottom: 36px;
+    max-width: 420px;
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 32px;
+    margin-bottom: 28px;
+  }
+
+  .field { display: flex; flex-direction: column; gap: 8px; }
+
+  .field label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #4a7040;
+  }
+
+  .field input,
+  .field select {
+    background: rgba(255,255,255,0.55);
+    border: 1px solid rgba(74,112,64,0.25);
+    border-radius: 3px;
+    padding: 12px 14px;
+    font-size: 0.88rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #1e3320;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+
+  .field input:focus,
+  .field select:focus {
+    border-color: #4a7040;
+    background: rgba(255,255,255,0.85);
+  }
+
+  .field input::placeholder { color: #a0b898; }
+
+  .req { color: #c0392b; }
+
+  .checkbox-row {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 32px;
+  }
+
+  .checkbox-row input[type="checkbox"] {
+    accent-color: #4a7040;
+    margin-top: 2px;
+    flex-shrink: 0;
+    width: 15px;
+    height: 15px;
+  }
+
+  .checkbox-row label {
+    font-size: 0.75rem;
+    color: #5a7a4a;
+    line-height: 1.65;
+  }
+
+  .submit-btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #4a7040 !important;
+    color: #f0ece0 !important;
+    border: none !important;
+    border-radius: 3px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+
+  .submit-btn:hover { background-color: #2d4a2d !important; }
+
+  .success-msg {
+    display: none;
+    padding: 20px 0;
+    color: #2d4a2d;
+    font-size: 0.9rem;
+    margin-top: 20px;
+    text-align: center;
+    letter-spacing: 0.5px;
+    border-top: 1px solid rgba(74,112,64,0.3);
+  }
+
+  @media (max-width: 520px) {
+    .form-grid { grid-template-columns: 1fr; }
+    h1 { font-size: 2.2rem; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="eyebrow">RSVP</div>
+  <h1>Vikas &amp; <strong>Roshni</strong></h1>
+  <div class="subtitle">Kindly respond by 30th April 2026</div>
+
+  <div class="deco">
+    <div class="deco-line"></div>
+    <div class="deco-symbol">✦</div>
+    <div class="deco-line"></div>
+  </div>
+
+  <p class="desc">We are so excited to celebrate these auspicious moments with you, as we begin our forever together. Please let us know if you will join us!</p>
+
+  <form id="rsvpForm" novalidate>
+    <div class="form-grid">
+      <div class="field">
+        <label for="firstName">First Name <span class="req">*</span></label>
+        <input type="text" id="firstName" name="firstName" placeholder="First Name" required>
+      </div>
+      <div class="field">
+        <label for="lastName">Last Name <span class="req">*</span></label>
+        <input type="text" id="lastName" name="lastName" placeholder="Last Name" required>
+      </div>
+      <div class="field">
+        <label for="phone">Phone <span class="req">*</span></label>
+        <input type="tel" id="phone" name="phone" placeholder="Phone" required>
+      </div>
+      <div class="field">
+        <label for="email">Email <span class="req">*</span></label>
+        <input type="email" id="email" name="email" placeholder="Email" required>
+      </div>
+      <div class="field">
+        <label for="attendance">Event Attendance <span class="req">*</span></label>
+        <select id="attendance" name="attendance" required>
+          <option value="" disabled selected></option>
+          <option value="yes">Yes, I'll be there</option>
+          <option value="no">No, I can't make it</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="attendees">Expected attendees</label>
+        <input type="number" id="attendees" name="attendees" placeholder="Including yourself" min="1" max="20">
+      </div>
+    </div>
+
+    <div class="checkbox-row">
+      <input type="checkbox" id="consent" name="consent">
+      <label for="consent">I agree to receive text messages and/or WhatsApp messages related only to this Wedding party, including RSVP confirmation, reminders, and event details. Message and data rates may apply. Reply HELP for help or STOP to opt-out.</label>
+    </div>
+
+    <button type="submit" class="submit-btn">Send RSVP</button>
+    <div class="success-msg" id="successMsg">Thank you! We can't wait to celebrate with you. ✦</div>
+  </form>
+</div>
+
+<script>
+  document.getElementById('rsvpForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const required = ['firstName', 'lastName', 'phone', 'email', 'attendance'];
+    let valid = true;
+    required.forEach(id => {
+      const el = document.getElementById(id);
+      if (!el.value.trim()) {
+        el.style.borderColor = '#c0392b';
+        valid = false;
+      } else {
+        el.style.borderColor = 'rgba(74,112,64,0.25)';
+      }
+    });
+    if (!valid) return;
+    document.getElementById('successMsg').style.display = 'block';
+    this.querySelector('.submit-btn').style.display = 'none';
+  });
+</script>
+</body>
+</html>

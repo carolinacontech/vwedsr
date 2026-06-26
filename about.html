@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us — Vikas Weds Roshni</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Montserrat:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #e2c97e;
+      --dark: #3a3028;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #f5ede3;
+      overflow-x: hidden;
+    }
+
+    /* ── DESKTOP NAV ── */
+    .desktop-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      height: 56px;
+      background: transparent;
+      border-bottom: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+    }
+
+    .desktop-nav a {
+      text-decoration: none;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 2.5px;
+      color: #3d5a3e;
+      transition: color 0.2s;
+    }
+
+    .desktop-nav a:hover { color: var(--gold); }
+    .nav-rsvp { font-family: 'Great Vibes', cursive !important; font-size: 32px !important; letter-spacing: 0 !important; text-transform: lowercase; }
+
+    /* ── FLOATING HAMBURGER (mobile only) ── */
+    .hamburger {
+      display: none;
+      position: fixed;
+      top: 14px;
+      left: 20px;
+      transform: none;
+      z-index: 300;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      align-items: center;
+    }
+
+    .nav-bar-mobile {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 56px;
+      z-index: 290;
+      background: transparent;
+      transition: background 0.3s ease, backdrop-filter 0.3s ease;
+    }
+
+    .nav-bar-mobile.scrolled {
+      background: rgba(255, 248, 240, 0.95);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+    }
+
+    .hamburger span {
+      display: block;
+      width: 26px;
+      height: 2px;
+      background: var(--dark);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    /* Mobile drawer */
+    .nav-drawer {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 250;
+      background: rgba(255, 248, 240, 0.98);
+      backdrop-filter: blur(10px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100dvh;
+      transform: translateY(-100%);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.35s ease;
+    }
+
+    .nav-drawer.open {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .nav-drawer a {
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 4px;
+      color: var(--dark);
+      padding: 18px 0;
+      width: 100%;
+      text-align: center;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.12);
+      transition: color 0.2s;
+    }
+
+    .nav-drawer a:first-child { border-top: 1px solid rgba(201, 168, 76, 0.12); }
+    .nav-drawer a:hover { color: var(--gold); }
+
+    .drawer-close {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(201, 168, 76, 0.1);
+      border: 1px solid rgba(201, 168, 76, 0.3);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: var(--dark);
+      line-height: 1;
+    }
+
+    /* ── ABOUT ── */
+    .about {
+      background: #f5ede3;
+      padding-top: 56px;
+    }
+
+    .about-text {
+      padding: 80px 10% 60px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .about-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: 72px;
+      font-weight: 400;
+      color: #3d5a3e;
+      margin-bottom: 32px;
+      line-height: 1.1;
+    }
+
+    .about-text p {
+      font-size: 15px;
+      line-height: 1.8;
+      color: #3d5a3e;
+      margin-bottom: 24px;
+    }
+
+    .about-photo-main {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      max-height: 600px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .about-grid img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 767px) {
+      .desktop-nav { display: none; }
+      .hamburger { display: flex; }
+      .nav-bar-mobile { display: block; }
+
+      .about-text {
+        padding: 80px 6% 40px;
+      }
+
+      .about-title { font-size: 52px; }
+      .about-text p { font-size: 14px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Desktop nav -->
+  <nav class="desktop-nav">
+    <a href="index.html">HOME</a>
+    <a href="about.html">ABOUT US</a>
+    <a href="index.html#wedding-week">WEDDING WEEK</a>
+    <a href="index.html#attire">ATTIRE</a>
+    <a href="index.html#travel">TRAVEL TIPS</a>
+    <a href="rsvp-vikas-roshni.html" target="_blank" class="nav-rsvp">RSVP</a>
+  </nav>
+
+  <!-- Mobile top bar (appears on scroll) -->
+  <div class="nav-bar-mobile" id="navBarMobile"></div>
+
+  <!-- Floating hamburger (mobile) -->
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+
+  <!-- Mobile full-screen drawer -->
+  <div class="nav-drawer" id="navDrawer">
+    <button class="drawer-close" id="drawerClose" aria-label="Cerrar">✕</button>
+    <a href="index.html" onclick="closeMenu()">HOME</a>
+    <a href="about.html" onclick="closeMenu()">ABOUT US</a>
+    <a href="index.html#wedding-week" onclick="closeMenu()">WEDDING WEEK</a>
+    <a href="index.html#attire" onclick="closeMenu()">ATTIRE</a>
+    <a href="index.html#travel" onclick="closeMenu()">TRAVEL TIPS</a>
+    <a href="rsvp-vikas-roshni.html" target="_blank" onclick="closeMenu()" class="nav-rsvp">RSVP</a>
+  </div>
+
+  <!-- ABOUT US -->
+  <section class="about" id="about">
+    <div class="about-text">
+      <h2 class="about-title">Our Story</h2>
+      <p>We met in beautiful Portugal — what started as a chance meeting quickly turned into an unforgettable weekend. From that very first trip, we knew there was something special between us.</p>
+      <p>After Portugal, we found every excuse to see each other again, meeting in different corners of Europe and the US, squeezing in long weekends, and spontaneous trips. What began as a spark turned into a story we couldn't wait to keep writing together.</p>
+      <p>In August, in sunny Tenerife, Vikas proposed overlooking a beautiful sunset. It was a calm, unforgettable moment, and it felt like the perfect way to begin this next chapter together.</p>
+      <p>Now, we can't wait to begin our next chapter and celebrate our love with all of you in Panama — bringing together our favourite people, vibrant traditions, and a whole lot of joy in one unforgettable place.</p>
+    </div>
+    <div class="about-photos">
+      <img class="about-photo-main" src="fwdaboutuswebsite/IMG_9371.jpeg" alt="Vikas & Roshni" />
+      <div class="about-grid">
+        <img src="fwdaboutuswebsite/IMG_8950.jpeg" alt="" />
+        <img src="fwdaboutuswebsite/IMG_8084.jpeg" alt="" />
+        <img src="fwdaboutuswebsite/IMG_9373.jpeg" alt="" />
+        <img src="fwdaboutuswebsite/1f6d6642-ec1f-4b1a-be54-bfaf48d5a491.jpeg" alt="" />
+        <img src="fwdaboutuswebsite/IMG_2135.jpeg" alt="" />
+        <img src="fwdaboutuswebsite/a6c98b5f-9302-4a95-9699-24aa30fa1009.jpeg" alt="" />
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const drawer = document.getElementById('navDrawer');
+    const drawerClose = document.getElementById('drawerClose');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.add('open');
+      drawer.classList.add('open');
+    });
+
+    function closeMenu() {
+      hamburger.classList.remove('open');
+      drawer.classList.remove('open');
+    }
+
+    drawerClose.addEventListener('click', closeMenu);
+
+    const navBarMobile = document.getElementById('navBarMobile');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 10) {
+        navBarMobile.classList.add('scrolled');
+      } else {
+        navBarMobile.classList.remove('scrolled');
+      }
+    });
+  </script>
+
+</body>
+</html>
