@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Attire — Vikas Weds Roshni</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet" />
+  <style>
+    @font-face {
+      font-family: 'Adelia';
+      src: url('adelia.otf') format('opentype'),
+           url('adelia.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #e2c97e;
+      --dark: #3a3028;
+      --green: #3d5a3e;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #f5ede3;
+      overflow-x: hidden;
+    }
+
+    /* ── DESKTOP NAV ── */
+    .desktop-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      height: 56px;
+      background: transparent;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+    }
+
+    .desktop-nav a {
+      text-decoration: none;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 2.5px;
+      color: var(--green);
+      transition: color 0.2s;
+      text-shadow: 0 1px 6px rgba(255,255,255,0.8), 0 0 12px rgba(255,255,255,0.6);
+    }
+
+    .desktop-nav a:hover { color: var(--gold); }
+    .nav-rsvp { font-family: 'Great Vibes', cursive !important; font-size: 32px !important; letter-spacing: 0 !important; text-transform: lowercase; }
+
+    /* ── HAMBURGER ── */
+    .hamburger {
+      display: none;
+      position: fixed;
+      top: 14px;
+      left: 20px;
+      z-index: 300;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
+      align-items: center;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 26px;
+      height: 2px;
+      background: var(--dark);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .nav-bar-mobile {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: 56px;
+      z-index: 290;
+      background: transparent;
+      transition: background 0.3s ease, backdrop-filter 0.3s ease;
+    }
+
+    .nav-bar-mobile.scrolled {
+      background: rgba(255, 248, 240, 0.95);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+    }
+
+    .nav-drawer {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 250;
+      background: rgba(255, 248, 240, 0.98);
+      backdrop-filter: blur(10px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100dvh;
+      transform: translateY(-100%);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.35s ease;
+    }
+
+    .nav-drawer.open { transform: translateY(0); opacity: 1; pointer-events: all; }
+
+    .nav-drawer a {
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 4px;
+      color: var(--dark);
+      padding: 18px 0;
+      width: 100%;
+      text-align: center;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.12);
+      transition: color 0.2s;
+    }
+
+    .nav-drawer a:first-child { border-top: 1px solid rgba(201, 168, 76, 0.12); }
+    .nav-drawer a:hover { color: var(--gold); }
+
+    .drawer-close {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(201, 168, 76, 0.1);
+      border: 1px solid rgba(201, 168, 76, 0.3);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      color: var(--dark);
+    }
+
+    /* ── CONTENT ── */
+    .attire-section {
+      padding-top: 100px;
+      padding-bottom: 60px;
+      min-height: 100vh;
+    }
+
+    .attire-header {
+      text-align: center;
+      padding: 0 20px 40px;
+    }
+
+    .attire-title {
+      font-family: 'Adelia', cursive;
+      font-size: 72px;
+      font-weight: normal;
+      color: var(--dark);
+      line-height: 1.1;
+      margin-bottom: 32px;
+    }
+
+    .attire-subtitle {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      max-width: 340px;
+      margin: 0 auto;
+      font-weight: 300;
+      color: var(--green);
+      line-height: 1.8;
+      max-width: 340px;
+      margin: 0 auto;
+    }
+
+    /* ── CARDS ── */
+    .attire-cards {
+      margin: 0 auto;
+      width: 60%;
+      max-width: 480px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      padding-bottom: 60px;
+    }
+
+    .attire-card {
+      position: relative;
+      padding: 28px 18px 36px;
+      text-align: center;
+      background: #f5ede3;
+      border: 1.5px solid var(--gold);
+      border-radius: 10px;
+      box-shadow: inset 0 0 0 5px #f5ede3, inset 0 0 0 7px rgba(210,120,130,0.55);
+      min-height: 90px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .attire-card-event {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--gold);
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .attire-card-dress {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--dark);
+      line-height: 1.5;
+    }
+
+    .attire-card-diamond {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 8px;
+      color: var(--gold);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      white-space: nowrap;
+    }
+
+    .attire-card-more {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 7px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0.7;
+    }
+
+    /* ── FLOWER DIVIDER ── */
+    .attire-flowers {
+      display: block;
+      width: 55%;
+      max-width: 500px;
+      margin: -5% auto 0;
+    }
+
+    /* ── BOTTOM SECTION ── */
+    .attire-bottom {
+      text-align: center;
+      padding: 40px 20px 60px;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .attire-pdf-btn {
+      display: inline-block;
+      background: var(--dark);
+      color: #f5ede3;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 13px 28px;
+      border-radius: 4px;
+      margin-bottom: 36px;
+      transition: background 0.2s;
+    }
+
+    .attire-pdf-btn:hover { background: #1a1410; }
+
+    .attire-inspiration {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--dark);
+      line-height: 1.8;
+      margin-bottom: 28px;
+    }
+
+    .attire-links { display: flex; flex-direction: column; gap: 20px; }
+
+    .attire-link-item { text-align: center; }
+
+    .attire-link-name {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--dark);
+      margin-bottom: 2px;
+    }
+
+    .attire-link-item a {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
+      color: var(--dark);
+      text-decoration: underline;
+    }
+
+    .attire-link-item a:hover { color: var(--gold); }
+
+    /* ── MODAL ── */
+    .attire-modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      background: rgba(0,0,0,0.75);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .attire-modal-overlay.open {
+      display: flex;
+    }
+
+    .attire-modal {
+      position: relative;
+      max-width: 90vw;
+      max-height: 90vh;
+    }
+
+    .attire-modal img {
+      display: block;
+      max-width: 100%;
+      max-height: 85vh;
+      border-radius: 8px;
+      object-fit: contain;
+    }
+
+    .attire-modal-close {
+      position: absolute;
+      top: -16px;
+      right: -16px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--dark);
+      color: #f5ede3;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+
+    .attire-card { cursor: pointer; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 767px) {
+      .desktop-nav { display: none; }
+      .hamburger { display: flex; }
+      .nav-bar-mobile { display: block; }
+
+      .attire-section { padding-top: 80px; }
+      .attire-title { font-size: 52px; }
+
+      .attire-cards {
+        width: 84%;
+        gap: 12px;
+        padding-bottom: 40px;
+      }
+
+      .attire-flowers {
+        width: 100%;
+        max-width: 100%;
+        margin: -10% auto 0;
+      }
+
+      .attire-card { padding: 22px 12px 30px; }
+      .attire-card-event { font-size: 18px; }
+      .attire-card-dress { font-size: 9px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="desktop-nav">
+    <a href="index.html">HOME</a>
+    <a href="about.html">ABOUT US</a>
+    <a href="wedding-week.html">WEDDING WEEK</a>
+    <a href="attire.html">ATTIRE</a>
+    <a href="travel-tips.html">TRAVEL TIPS</a>
+    <a href="rsvp-vikas-roshni.html" target="_blank" class="nav-rsvp">RSVP</a>
+  </nav>
+
+  <div class="nav-bar-mobile" id="navBarMobile"></div>
+
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+
+  <div class="nav-drawer" id="navDrawer">
+    <button class="drawer-close" id="drawerClose" aria-label="Cerrar">✕</button>
+    <a href="index.html" onclick="closeMenu()">HOME</a>
+    <a href="about.html" onclick="closeMenu()">ABOUT US</a>
+    <a href="wedding-week.html" onclick="closeMenu()">WEDDING WEEK</a>
+    <a href="attire.html" onclick="closeMenu()">ATTIRE</a>
+    <a href="travel-tips.html" onclick="closeMenu()">TRAVEL TIPS</a>
+    <a href="rsvp-vikas-roshni.html" target="_blank" onclick="closeMenu()" class="nav-rsvp">RSVP</a>
+  </div>
+
+  <section class="attire-section">
+    <div class="attire-header">
+      <h1 class="attire-title">Attire</h1>
+      <p class="attire-subtitle">Explore each celebration to discover the dress code for the day.</p>
+    </div>
+
+    <div class="attire-cards">
+      <div class="attire-card">
+        <div class="attire-card-event">Mata ki Chowki</div>
+        <div class="attire-card-dress">Festive</div>
+        <span class="attire-card-diamond">⬧<span class="attire-card-more">more info</span></span>
+      </div>
+      <div class="attire-card">
+        <div class="attire-card-event">Sangeet</div>
+        <div class="attire-card-dress">Bollywood Shimmer</div>
+        <span class="attire-card-diamond">⬧<span class="attire-card-more">more info</span></span>
+      </div>
+      <div class="attire-card">
+        <div class="attire-card-event">Ring Ceremony</div>
+        <div class="attire-card-dress">Resort Formal</div>
+        <span class="attire-card-diamond">⬧<span class="attire-card-more">more info</span></span>
+      </div>
+      <div class="attire-card">
+        <div class="attire-card-event">Baarat &amp; Pheras</div>
+        <div class="attire-card-dress">Ethnic Pastels</div>
+        <span class="attire-card-diamond">⬧<span class="attire-card-more">more info</span></span>
+      </div>
+      <div class="attire-card">
+        <div class="attire-card-event">Ghari Pooja</div>
+        <div class="attire-card-dress">Indian Traditional</div>
+        <span class="attire-card-diamond">⬧<span class="attire-card-more">more info</span></span>
+      </div>
+      <div class="attire-card">
+        <div class="attire-card-event">Reception</div>
+        <div class="attire-card-dress">Black Tie</div>
+        <span class="attire-card-diamond">⬧<span class="attire-card-more">more info</span></span>
+      </div>
+      <div class="attire-card">
+        <div class="attire-card-event">Mehendi</div>
+        <div class="attire-card-dress">Colorful, Floral</div>
+        <span class="attire-card-diamond">⬧<span class="attire-card-more">more info</span></span>
+      </div>
+      <div class="attire-card">
+        <div class="attire-card-event">Farewell Brunch</div>
+        <div class="attire-card-dress">Resort Chic</div>
+        <span class="attire-card-diamond">⬧<span class="attire-card-more">more info</span></span>
+      </div>
+    </div>
+
+    <!-- ── FLOWER DIVIDER ── -->
+    <img src="flowers-divider.png" alt="" class="attire-flowers" />
+
+    <!-- ── BOTTOM SECTION ── -->
+    <div class="attire-bottom">
+      <a href="vikaswedsroshni_attire.pdf" download class="attire-pdf-btn">DOWNLOAD ATTIRE PDF</a>
+
+      <p class="attire-inspiration">For attire inspiration or to shop Indian outfits in the USA, you can explore websites like:</p>
+
+      <div class="attire-links">
+        <div class="attire-link-item">
+          <div class="attire-link-name">Lashkaraa</div>
+          <a href="https://www.lashkaraa.com" target="_blank">www.lashkaraa.com</a>
+        </div>
+        <div class="attire-link-item">
+          <div class="attire-link-name">Aza</div>
+          <a href="https://www.azafashions.com" target="_blank">www.azafashions.com</a>
+        </div>
+        <div class="attire-link-item">
+          <div class="attire-link-name">Pernia's Pop-Up Shop</div>
+          <a href="https://www.perniaspopupshop.com" target="_blank">www.perniaspopupshop.com</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL -->
+  <div class="attire-modal-overlay" id="attireModal">
+    <div class="attire-modal">
+      <button class="attire-modal-close" id="modalClose">✕</button>
+      <img src="" alt="" id="modalImg" />
+    </div>
+  </div>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const drawer = document.getElementById('navDrawer');
+    const drawerClose = document.getElementById('drawerClose');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.add('open');
+      drawer.classList.add('open');
+    });
+
+    function closeMenu() {
+      hamburger.classList.remove('open');
+      drawer.classList.remove('open');
+    }
+
+    drawerClose.addEventListener('click', closeMenu);
+
+    // Modal
+    const modal = document.getElementById('attireModal');
+    const modalImg = document.getElementById('modalImg');
+    const modalClose = document.getElementById('modalClose');
+
+    const cardImages = {
+      'Mata ki Chowki': 'attire-mata-ki-chowki.png',
+      'Sangeet': 'attire-saanget.png',
+      'Ring Ceremony': 'attire-ring-ceremony.png',
+      'Baarat & Pheras': 'attire-baarat.png',
+      'Ghari Pooja': 'attire-ghari-pooja.png',
+      'Reception': 'attire-reception.png',
+      'Mehendi': 'attire-mehendi.png',
+      'Farewell Brunch': 'attire-farewell.png'
+    };
+
+    document.querySelectorAll('.attire-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const eventName = card.querySelector('.attire-card-event').textContent.trim();
+        const imgSrc = cardImages[eventName];
+        if (imgSrc) {
+          modalImg.src = imgSrc;
+          modalImg.alt = eventName;
+          modal.classList.add('open');
+        }
+      });
+    });
+
+    modalClose.addEventListener('click', () => modal.classList.remove('open'));
+    modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('open'); });
+
+    const navBarMobile = document.getElementById('navBarMobile');
+    window.addEventListener('scroll', () => {
+      navBarMobile.classList.toggle('scrolled', window.scrollY > 10);
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vikas and Roshni – Booking Form</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: #f0ece0;
+      font-family: 'Roboto', sans-serif;
+      min-height: 100vh;
+      padding: 60px 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .card {
+      max-width: 620px;
+      width: 100%;
+    }
+
+    /* ── Header ── */
+    .eyebrow {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #7a9e6a;
+      margin-bottom: 12px;
+    }
+
+    .form-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 3rem;
+      font-weight: 300;
+      font-style: italic;
+      color: #1e3320;
+      line-height: 1.05;
+      margin-bottom: 6px;
+    }
+
+    .form-title strong {
+      font-weight: 600;
+      font-style: normal;
+    }
+
+    .form-subtitle {
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.82rem;
+      color: #5a7a4a;
+      margin-bottom: 36px;
+      letter-spacing: 0.3px;
+    }
+
+    .deco {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+
+    .deco-line { flex: 1; height: 1px; background: rgba(74,112,64,0.2); }
+    .deco-symbol { color: #7a9e6a; font-size: 1rem; }
+
+    .form-intro p {
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.88rem;
+      color: #3a5a2e;
+      line-height: 1.75;
+      margin-bottom: 12px;
+    }
+
+    .form-intro p.bold-note {
+      font-weight: 500;
+      color: #1e3320;
+    }
+
+    /* ── Sections ── */
+    .section { margin-top: 36px; }
+
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #4a7040;
+      margin-bottom: 6px;
+    }
+
+    .section-desc {
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.82rem;
+      color: #5a7a4a;
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+
+    /* ── Sub-section ── */
+    .sub-section { margin-top: 20px; }
+
+    .sub-section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #7a9e6a;
+      margin-bottom: 12px;
+    }
+
+    /* ── Grid ── */
+    .row-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px 24px;
+    }
+
+    /* ── Field ── */
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .field:last-child { margin-bottom: 0; }
+
+    label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #4a7040;
+    }
+
+    label .req { color: #c0392b; }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="date"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid rgba(74,112,64,0.25);
+      border-radius: 3px;
+      background: rgba(255,255,255,0.55);
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.88rem;
+      color: #1e3320;
+      outline: none;
+      transition: border-color 0.2s, background 0.2s;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="tel"]:focus,
+    input[type="date"]:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #4a7040;
+      background: rgba(255,255,255,0.85);
+    }
+
+    input::placeholder,
+    textarea::placeholder { color: #a0b898; }
+
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%234a7040' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      padding-right: 34px;
+      cursor: pointer;
+    }
+
+    .input-icon { position: relative; }
+    .input-icon svg {
+      position: absolute;
+      left: 11px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      color: #7a9e6a;
+    }
+    .input-icon input { padding-left: 34px; }
+
+    textarea { resize: vertical; min-height: 100px; }
+
+    /* ── Guest block ── */
+    .guest-block {
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(74,112,64,0.15);
+    }
+
+    .guest-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #5a7a4a;
+      margin-bottom: 12px;
+    }
+
+    /* ── Checkboxes ── */
+    .checkbox-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .checkbox-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      cursor: pointer;
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.82rem;
+      color: #5a7a4a;
+      line-height: 1.5;
+    }
+
+    .checkbox-label input[type="checkbox"] {
+      margin-top: 2px;
+      width: 15px;
+      height: 15px;
+      flex-shrink: 0;
+      accent-color: #4a7040;
+      cursor: pointer;
+    }
+
+    /* ── Closing ── */
+    .closing {
+      margin-top: 36px;
+      margin-bottom: 24px;
+    }
+
+    .closing p {
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.88rem;
+      color: #3a5a2e;
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+
+    .closing-signature {
+      text-align: center;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 0.88rem;
+      color: #1e3320;
+      line-height: 1.6;
+    }
+
+    /* ── Divider ── */
+    hr.divider {
+      border: none;
+      border-top: 1px solid rgba(74,112,64,0.2);
+      margin: 24px 0;
+    }
+
+    /* ── T&C ── */
+    .tc-block { margin-bottom: 28px; }
+
+    /* ── Submit ── */
+    .btn-submit {
+      display: block;
+      width: 100%;
+      padding: 15px;
+      background-color: #4a7040;
+      color: #f0ece0;
+      border: none;
+      border-radius: 3px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .btn-submit:hover { background-color: #2d4a2d; }
+    .btn-submit:disabled { opacity: 0.7; cursor: not-allowed; }
+
+    /* ── Footer ── */
+    .form-footer {
+      text-align: center;
+      margin-top: 18px;
+      font-family: 'Roboto', sans-serif;
+      font-size: 0.75rem;
+    }
+
+    .form-footer a { color: #4a7040; text-decoration: underline; }
+    .form-footer a:hover { color: #2d4a2d; }
+
+    @media (max-width: 520px) {
+      .form-title { font-size: 2.2rem; }
+      .row-2 { grid-template-columns: 1fr; }
+      body { padding: 40px 16px 60px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+
+    <div class="eyebrow">Booking Form</div>
+    <h1 class="form-title">Vikas &amp; <strong>Roshni</strong></h1>
+    <div class="form-subtitle">Kindly complete your details below</div>
+
+    <div class="deco">
+      <div class="deco-line"></div>
+      <div class="deco-symbol">✦</div>
+      <div class="deco-line"></div>
+    </div>
+
+    <div class="form-intro">
+      <p>We are truly delighted that you will be joining us to celebrate! Please take a moment to complete the details below so we can make your stay as smooth and enjoyable as possible.</p>
+      <p class="bold-note">If you received this form, please fill it out with your own name. Kindly don't forward it to anyone else.</p>
+    </div>
+
+    <form id="bookingForm" novalidate>
+
+      <!-- Primary Contact -->
+      <div class="section">
+        <h2 class="section-title">Primary Contact</h2>
+
+        <div class="row-2">
+          <div class="field">
+            <label for="firstName">First Name <span class="req">*</span></label>
+            <input type="text" id="firstName" name="firstName" placeholder="First Name" required />
+          </div>
+          <div class="field">
+            <label for="lastName">Last Name <span class="req">*</span></label>
+            <input type="text" id="lastName" name="lastName" placeholder="Last Name" required />
+          </div>
+        </div>
+
+        <div class="row-2">
+          <div class="field">
+            <label for="phone">Phone <span class="req">*</span></label>
+            <input type="tel" id="phone" name="phone" placeholder="Phone" required />
+          </div>
+          <div class="field">
+            <label for="email">Email <span class="req">*</span></label>
+            <div class="input-icon">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                <path d="M2 7l10 7 10-7"/>
+              </svg>
+              <input type="email" id="email" name="email" placeholder="Email" required />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Your Party -->
+      <div class="section">
+        <h2 class="section-title">Your Party</h2>
+        <p class="section-desc">Please list all guests included in your RSVP (including yourself)</p>
+
+        <div class="field">
+          <label for="guestCount">How many guests will you be bringing?</label>
+          <select id="guestCount" name="guestCount">
+            <option value="" disabled selected></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+        </div>
+
+        <div id="guestList"></div>
+      </div>
+
+      <!-- Travel Information -->
+      <div class="section">
+        <h2 class="section-title">Travel Information</h2>
+        <p class="section-desc">To assist us with transportation planning and guest coordination, please share your travel details if available.</p>
+
+        <div class="field">
+          <label>Have your travel plans been finalized?</label>
+          <div class="checkbox-group">
+            <label class="checkbox-label">
+              <input type="checkbox" name="travelStatus" value="yes" id="travelYes" />
+              Yes (please complete the details below)
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" name="travelStatus" value="notyet" id="travelNotYet" />
+              Not yet – I will update later
+            </label>
+          </div>
+        </div>
+
+        <!-- Arrival -->
+        <div class="sub-section">
+          <h3 class="sub-section-title">Arrival</h3>
+          <div class="row-2">
+            <div class="field">
+              <label for="arrivalDate">Arrival Date</label>
+              <div class="input-icon">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                  <rect x="3" y="4" width="18" height="18" rx="2"/>
+                  <path d="M16 2v4M8 2v4M3 10h18"/>
+                </svg>
+                <input type="date" id="arrivalDate" name="arrivalDate" />
+              </div>
+            </div>
+            <div class="field">
+              <label for="arrivalTime">Arrival Time</label>
+              <input type="text" id="arrivalTime" name="arrivalTime" placeholder="Arrival Time" />
+            </div>
+          </div>
+          <div class="field">
+            <label for="arrivalFlight">Arrival Flight</label>
+            <input type="text" id="arrivalFlight" name="arrivalFlight" placeholder="Arrival Flight" />
+          </div>
+        </div>
+
+        <!-- Departure -->
+        <div class="sub-section">
+          <h3 class="sub-section-title">Departure</h3>
+          <div class="row-2">
+            <div class="field">
+              <label for="departureDate">Departure Date</label>
+              <div class="input-icon">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                  <rect x="3" y="4" width="18" height="18" rx="2"/>
+                  <path d="M16 2v4M8 2v4M3 10h18"/>
+                </svg>
+                <input type="date" id="departureDate" name="departureDate" />
+              </div>
+            </div>
+            <div class="field">
+              <label for="departureTime">Departure Time</label>
+              <input type="text" id="departureTime" name="departureTime" placeholder="Departure Time" />
+            </div>
+          </div>
+          <div class="field">
+            <label for="departureFlight">Departure Flight</label>
+            <input type="text" id="departureFlight" name="departureFlight" placeholder="Departure Flight" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Hotel Accommodation -->
+      <div class="section">
+        <h2 class="section-title">Hotel Accommodation</h2>
+
+        <div class="sub-section">
+          <h3 class="sub-section-title">Stay Details</h3>
+          <div class="row-2">
+            <div class="field">
+              <label for="checkIn">Check in Date</label>
+              <div class="input-icon">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                  <rect x="3" y="4" width="18" height="18" rx="2"/>
+                  <path d="M16 2v4M8 2v4M3 10h18"/>
+                </svg>
+                <input type="date" id="checkIn" name="checkIn" />
+              </div>
+            </div>
+            <div class="field">
+              <label for="checkOut">Check out Date</label>
+              <div class="input-icon">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                  <rect x="3" y="4" width="18" height="18" rx="2"/>
+                  <path d="M16 2v4M8 2v4M3 10h18"/>
+                </svg>
+                <input type="date" id="checkOut" name="checkOut" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Additional Notes -->
+      <div class="section">
+        <h2 class="section-title">Additional Notes</h2>
+        <p class="section-desc">If there is anything else you would like us to know, or if you have any special requests, please share them here:</p>
+        <textarea id="notes" name="notes" rows="4"></textarea>
+      </div>
+
+      <!-- Closing -->
+      <div class="closing">
+        <p>Thank you for sharing your details—we can't wait to celebrate together!</p>
+        <div class="closing-signature">
+          With love,<br />Vikas &amp; Roshni
+        </div>
+      </div>
+
+      <hr class="divider" />
+
+      <!-- T&C -->
+      <div class="tc-block">
+        <label class="checkbox-label">
+          <input type="checkbox" id="tcAgree" name="tcAgree" required />
+          <span class="tc-text">
+            I agree to receive text messages and/or WhatsApp messages related only to this Wedding party,
+            including RSVP confirmation, reminders, and event details. Message and data rates may apply.
+            Reply HELP for help or STOP to opt-out.
+          </span>
+        </label>
+      </div>
+
+      <button type="submit" class="btn-submit">Submit</button>
+
+    </form>
+
+    <div class="form-footer">
+      <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+    </div>
+  </div>
+
+  <script>
+    // Mutual exclusivity for travel checkboxes
+    const travelYes = document.getElementById('travelYes');
+    const travelNotYet = document.getElementById('travelNotYet');
+    travelYes.addEventListener('change', () => { if (travelYes.checked) travelNotYet.checked = false; });
+    travelNotYet.addEventListener('change', () => { if (travelNotYet.checked) travelYes.checked = false; });
+
+    // Dynamic guest list
+    const guestCountEl = document.getElementById('guestCount');
+    const guestListEl = document.getElementById('guestList');
+
+    const ageOptions = ['Adult', 'Child (2–12)', 'Infant (under 2)'];
+
+    function buildGuestList(count) {
+      guestListEl.innerHTML = '';
+      for (let i = 1; i <= count; i++) {
+        const block = document.createElement('div');
+        block.className = 'guest-block';
+        block.innerHTML = `
+          <p class="guest-title">Guest #${i}</p>
+          <div class="row-2">
+            <div class="field">
+              <label>First Name</label>
+              <input type="text" name="guest${i}FirstName" placeholder="First Name" />
+            </div>
+            <div class="field">
+              <label>Last Name</label>
+              <input type="text" name="guest${i}LastName" placeholder="Last Name" />
+            </div>
+          </div>
+          <div class="field">
+            <label>Age Category</label>
+            <select name="guest${i}AgeCategory">
+              <option value="" disabled selected></option>
+              ${ageOptions.map(o => `<option value="${o}">${o}</option>`).join('')}
+            </select>
+          </div>
+        `;
+        guestListEl.appendChild(block);
+      }
+    }
+
+    guestCountEl.addEventListener('change', () => {
+      buildGuestList(parseInt(guestCountEl.value, 10));
+    });
+
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby0hkoScgVZ3Y_tz5bng1-p8peu-OgpdMtM8uvCFAdhqQP_SJAesOdy-PcujuQqKYQx/exec';
+
+    document.getElementById('bookingForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const required = e.target.querySelectorAll('[required]');
+      let valid = true;
+      required.forEach(el => {
+        if ((el.type === 'checkbox' && !el.checked) || (el.type !== 'checkbox' && !el.value.trim())) {
+          el.style.borderColor = '#c0392b';
+          valid = false;
+        } else {
+          el.style.borderColor = '';
+        }
+      });
+      if (!valid) return;
+
+      const btn = e.target.querySelector('.btn-submit');
+      btn.textContent = 'Sending...';
+      btn.disabled = true;
+
+      const guestCount = parseInt(document.getElementById('guestCount').value) || 0;
+      const guests = [];
+      for (let i = 1; i <= guestCount; i++) {
+        guests.push({
+          firstName:   (e.target[`guest${i}FirstName`]   || {}).value || '',
+          lastName:    (e.target[`guest${i}LastName`]    || {}).value || '',
+          ageCategory: (e.target[`guest${i}AgeCategory`] || {}).value || ''
+        });
+      }
+
+      const payload = {
+        formType:        'booking',
+        firstName:       document.getElementById('firstName').value.trim(),
+        lastName:        document.getElementById('lastName').value.trim(),
+        phone:           document.getElementById('phone').value.trim(),
+        email:           document.getElementById('email').value.trim(),
+        guestCount,
+        guests,
+        travelStatus:    document.getElementById('travelYes').checked ? 'yes' : 'not yet',
+        arrivalDate:     document.getElementById('arrivalDate').value,
+        arrivalTime:     document.getElementById('arrivalTime').value,
+        arrivalFlight:   document.getElementById('arrivalFlight').value,
+        departureDate:   document.getElementById('departureDate').value,
+        departureTime:   document.getElementById('departureTime').value,
+        departureFlight: document.getElementById('departureFlight').value,
+        checkIn:         document.getElementById('checkIn').value,
+        checkOut:        document.getElementById('checkOut').value,
+        notes:           document.getElementById('notes').value,
+        tcAgree:         document.getElementById('tcAgree').checked
+      };
+
+      fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+      .then(() => {
+        e.target.innerHTML = '<div style="text-align:center;padding:40px 0;font-size:1rem;color:#2d4a2d;line-height:1.8;">Thank you! Your details have been submitted.<br><br>With love,<br><strong>Vikas &amp; Roshni</strong></div>';
+      })
+      .catch(() => {
+        btn.textContent = 'Submit';
+        btn.disabled = false;
+        alert('Something went wrong. Please try again.');
+      });
+    });
+  </script>
+</body>
+</html>

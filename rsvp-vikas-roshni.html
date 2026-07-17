@@ -223,6 +223,8 @@
 </div>
 
 <script>
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby0hkoScgVZ3Y_tz5bng1-p8peu-OgpdMtM8uvCFAdhqQP_SJAesOdy-PcujuQqKYQx/exec';
+
   document.getElementById('rsvpForm').addEventListener('submit', function(e) {
     e.preventDefault();
     const required = ['firstName', 'lastName', 'phone', 'email', 'attendance'];
@@ -237,8 +239,40 @@
       }
     });
     if (!valid) return;
-    document.getElementById('successMsg').style.display = 'block';
-    this.querySelector('.submit-btn').style.display = 'none';
+
+    const btn = this.querySelector('.submit-btn');
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    const payload = {
+      firstName: document.getElementById('firstName').value.trim(),
+      lastName:  document.getElementById('lastName').value.trim(),
+      phone:     document.getElementById('phone').value.trim(),
+      email:     document.getElementById('email').value.trim(),
+      attendance: document.getElementById('attendance').value,
+      attendees:  document.getElementById('attendees').value,
+      consent:    document.getElementById('consent').checked
+    };
+
+    fetch(SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+    .then(() => {
+      if (payload.attendance === 'yes') {
+        window.location.href = 'booking-form.html';
+      } else {
+        document.getElementById('successMsg').style.display = 'block';
+        btn.style.display = 'none';
+      }
+    })
+    .catch(() => {
+      btn.textContent = 'Send RSVP';
+      btn.disabled = false;
+      alert('Something went wrong. Please try again.');
+    });
   });
 </script>
 </body>
