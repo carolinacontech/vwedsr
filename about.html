@@ -3,16 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About Us — Vikas Weds Roshni</title>
+  <title>Our Story — Vikas Weds Roshni</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Montserrat:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet" />
   <style>
+    @font-face {
+      font-family: 'Adelia';
+      src: url('adelia.otf') format('opentype'),
+           url('adelia.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --gold: #C9A84C;
-      --gold-light: #e2c97e;
       --dark: #3a3028;
+      --green: #3d5a3e;
     }
 
     body {
@@ -21,6 +29,8 @@
       overflow-x: hidden;
     }
 
+    img { image-orientation: from-image; }
+
     /* ── DESKTOP NAV ── */
     .desktop-nav {
       position: fixed;
@@ -28,7 +38,6 @@
       z-index: 200;
       height: 56px;
       background: transparent;
-      border-bottom: none;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -40,20 +49,19 @@
       font-size: 10px;
       font-weight: 500;
       letter-spacing: 2.5px;
-      color: #3d5a3e;
+      color: var(--green);
       transition: color 0.2s;
     }
 
     .desktop-nav a:hover { color: var(--gold); }
     .nav-rsvp { font-family: 'Great Vibes', cursive !important; font-size: 32px !important; letter-spacing: 0 !important; text-transform: lowercase; }
 
-    /* ── FLOATING HAMBURGER (mobile only) ── */
+    /* ── HAMBURGER ── */
     .hamburger {
       display: none;
       position: fixed;
       top: 14px;
       left: 20px;
-      transform: none;
       z-index: 300;
       flex-direction: column;
       justify-content: center;
@@ -66,6 +74,19 @@
       padding: 0;
       align-items: center;
     }
+
+    .hamburger span {
+      display: block;
+      width: 26px;
+      height: 2px;
+      background: var(--dark);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
     .nav-bar-mobile {
       display: none;
@@ -83,20 +104,6 @@
       border-bottom: 1px solid rgba(201, 168, 76, 0.2);
     }
 
-    .hamburger span {
-      display: block;
-      width: 26px;
-      height: 2px;
-      background: var(--dark);
-      border-radius: 2px;
-      transition: all 0.3s ease;
-    }
-
-    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-
-    /* Mobile drawer */
     .nav-drawer {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -114,11 +121,7 @@
       transition: all 0.35s ease;
     }
 
-    .nav-drawer.open {
-      transform: translateY(0);
-      opacity: 1;
-      pointer-events: all;
-    }
+    .nav-drawer.open { transform: translateY(0); opacity: 1; pointer-events: all; }
 
     .nav-drawer a {
       text-decoration: none;
@@ -155,45 +158,68 @@
       line-height: 1;
     }
 
-    /* ── ABOUT ── */
+    /* ── PAGE ── */
     .about {
       background: #f5ede3;
-      padding-top: 56px;
+      padding-top: 80px;
     }
 
-    .about-text {
-      padding: 80px 10% 60px;
-      max-width: 720px;
-      margin: 0 auto;
-    }
-
+    /* ── DESKTOP LAYOUT ── */
     .about-title {
-      font-family: 'Great Vibes', cursive;
-      font-size: 72px;
-      font-weight: 400;
-      color: #3d5a3e;
-      margin-bottom: 32px;
+      font-family: 'Adelia', cursive;
+      font-size: 80px;
+      font-weight: normal;
+      color: var(--dark);
       line-height: 1.1;
+      margin-bottom: 32px;
     }
 
     .about-text p {
       font-size: 15px;
       line-height: 1.8;
-      color: #3d5a3e;
-      margin-bottom: 24px;
+      color: var(--green);
+      margin-bottom: 20px;
     }
 
-    .about-photo-main {
+    /* Desktop: side by side */
+    .about-hero {
+      display: flex;
+      align-items: flex-start;
+      gap: 60px;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 60px 60px 0;
+    }
+
+    .about-text-col {
+      flex: 1;
+      padding-top: 20px;
+    }
+
+    .about-main-photo {
+      flex: 1;
+      max-width: 480px;
+    }
+
+    .about-main-photo img {
       width: 100%;
-      display: block;
+      height: 560px;
       object-fit: cover;
-      max-height: 600px;
+      display: block;
+      border-radius: 4px;
+    }
+
+    /* Grid */
+    .about-grid-wrap {
+      max-width: 1100px;
+      margin: 40px auto 0;
+      padding: 0 60px 80px;
     }
 
     .about-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 2px;
+      gap: 12px;
     }
 
     .about-grid img {
@@ -201,6 +227,7 @@
       aspect-ratio: 1;
       object-fit: cover;
       display: block;
+      border-radius: 4px;
     }
 
     /* ── MOBILE ── */
@@ -209,57 +236,72 @@
       .hamburger { display: flex; }
       .nav-bar-mobile { display: block; }
 
-      .about-text {
-        padding: 80px 6% 40px;
+      .about { padding-top: 70px; }
+
+      .about-hero {
+        flex-direction: column;
+        gap: 32px;
+        padding: 40px 6% 0;
       }
+
+      .about-main-photo { max-width: 100%; }
+      .about-main-photo img { height: 360px; }
 
       .about-title { font-size: 52px; }
       .about-text p { font-size: 14px; }
+
+      .about-grid-wrap {
+        padding: 0 0 60px;
+        margin-top: 20px;
+      }
+
+      .about-grid { gap: 2px; border-radius: 0; }
+      .about-grid img { border-radius: 0; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Desktop nav -->
   <nav class="desktop-nav">
     <a href="index.html">HOME</a>
     <a href="about.html">ABOUT US</a>
-    <a href="index.html#wedding-week">WEDDING WEEK</a>
-    <a href="index.html#attire">ATTIRE</a>
-    <a href="index.html#travel">TRAVEL TIPS</a>
+    <a href="wedding-week.html">WEDDING WEEK</a>
+    <a href="attire.html">ATTIRE</a>
+    <a href="travel-tips.html">TRAVEL TIPS</a>
     <a href="rsvp-vikas-roshni.html" target="_blank" class="nav-rsvp">RSVP</a>
   </nav>
 
-  <!-- Mobile top bar (appears on scroll) -->
   <div class="nav-bar-mobile" id="navBarMobile"></div>
 
-  <!-- Floating hamburger (mobile) -->
   <button class="hamburger" id="hamburger" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
 
-  <!-- Mobile full-screen drawer -->
   <div class="nav-drawer" id="navDrawer">
     <button class="drawer-close" id="drawerClose" aria-label="Cerrar">✕</button>
     <a href="index.html" onclick="closeMenu()">HOME</a>
     <a href="about.html" onclick="closeMenu()">ABOUT US</a>
-    <a href="index.html#wedding-week" onclick="closeMenu()">WEDDING WEEK</a>
-    <a href="index.html#attire" onclick="closeMenu()">ATTIRE</a>
-    <a href="index.html#travel" onclick="closeMenu()">TRAVEL TIPS</a>
+    <a href="wedding-week.html" onclick="closeMenu()">WEDDING WEEK</a>
+    <a href="attire.html" onclick="closeMenu()">ATTIRE</a>
+    <a href="travel-tips.html" onclick="closeMenu()">TRAVEL TIPS</a>
     <a href="rsvp-vikas-roshni.html" target="_blank" onclick="closeMenu()" class="nav-rsvp">RSVP</a>
   </div>
 
-  <!-- ABOUT US -->
-  <section class="about" id="about">
-    <div class="about-text">
-      <h2 class="about-title">Our Story</h2>
-      <p>We met in beautiful Portugal — what started as a chance meeting quickly turned into an unforgettable weekend. From that very first trip, we knew there was something special between us.</p>
-      <p>After Portugal, we found every excuse to see each other again, meeting in different corners of Europe and the US, squeezing in long weekends, and spontaneous trips. What began as a spark turned into a story we couldn't wait to keep writing together.</p>
-      <p>In August, in sunny Tenerife, Vikas proposed overlooking a beautiful sunset. It was a calm, unforgettable moment, and it felt like the perfect way to begin this next chapter together.</p>
-      <p>Now, we can't wait to begin our next chapter and celebrate our love with all of you in Panama — bringing together our favourite people, vibrant traditions, and a whole lot of joy in one unforgettable place.</p>
+  <section class="about">
+    <div class="about-hero">
+      <div class="about-text-col">
+        <h1 class="about-title">Our Story</h1>
+        <p>We met in beautiful Portugal — what started as a chance meeting quickly turned into an unforgettable weekend. From that very first trip, we knew there was something special between us.</p>
+        <p>After Portugal, we found every excuse to see each other again, meeting in different corners of Europe and the US, squeezing in long weekends, and spontaneous trips. What began as a spark turned into a story we couldn't wait to keep writing together.</p>
+        <p>In August, in sunny Tenerife, Vikas proposed overlooking a beautiful sunset. It was a calm, unforgettable moment, and it felt like the perfect way to begin this next chapter together.</p>
+        <p>Now, we can't wait to begin our next chapter and celebrate our love with all of you in Panama — bringing together our favourite people, vibrant traditions, and a whole lot of joy in one unforgettable place.</p>
+      </div>
+      <div class="about-main-photo">
+        <img src="fwdaboutuswebsite/IMG_9371.webp" alt="Vikas & Roshni" />
+      </div>
     </div>
-    <div class="about-photos">
-      <img class="about-photo-main" src="fwdaboutuswebsite/IMG_9371.webp" alt="Vikas & Roshni" />
+
+    <div class="about-grid-wrap">
       <div class="about-grid">
         <img src="fwdaboutuswebsite/IMG_8950.webp" alt="" />
         <img src="fwdaboutuswebsite/IMG_8084.webp" alt="" />
@@ -290,11 +332,7 @@
 
     const navBarMobile = document.getElementById('navBarMobile');
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 10) {
-        navBarMobile.classList.add('scrolled');
-      } else {
-        navBarMobile.classList.remove('scrolled');
-      }
+      navBarMobile.classList.toggle('scrolled', window.scrollY > 10);
     });
   </script>
 
