@@ -383,9 +383,11 @@
 
     .ww-flowers-divider {
       display: block;
-      width: 100%;
-      max-width: 380px;
-      margin: 32px auto 0;
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      margin-top: 0;
       opacity: 0.9;
     }
 
@@ -460,7 +462,7 @@
       .ww-event-name { font-size: 22px; }
       .ww-event-info { min-width: 72%; }
 
-      .ww-flowers-divider { width: 80%; }
+      .ww-flowers-divider { width: 100vw; }
     }
   </style>
 </head>
