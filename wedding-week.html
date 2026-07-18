@@ -69,7 +69,7 @@
       display: none;
       position: fixed;
       top: 14px;
-      left: 20px;
+      right: 20px;
       z-index: 300;
       flex-direction: column;
       justify-content: center;
@@ -166,6 +166,34 @@
       color: var(--dark);
     }
 
+    .ww-logo-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0px;
+      margin-top: 24px;
+      margin-bottom: 24px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .ww-vr-logo {
+      width: 208px;
+      height: 208px;
+      object-fit: contain;
+    }
+
+    .ww-celebrations {
+      font-family: 'Adelia', cursive;
+      font-size: 53px;
+      font-weight: 400;
+      font-synthesis: none;
+      -webkit-font-smoothing: antialiased;
+      color: var(--green);
+      line-height: 1;
+      margin-left: -8px;
+    }
+
     /* ── HERO + CARDS WRAPPER ── */
     .ww-section {
       background: #FBEFE3;
@@ -183,7 +211,7 @@
     /* ── DATE CARDS ── */
     .ww-cards {
       position: relative;
-      margin-top: -140px;
+      margin-top: 0;
       margin-left: auto;
       margin-right: auto;
       width: 60%;
@@ -387,11 +415,35 @@
       .ww-hero-desktop { display: none; }
       .ww-hero-mobile  { display: block; }
 
+      .ww-section {
+        background: #FBF2E9;
+      }
+
+      body {
+        background: #FBF2E9;
+      }
+
+      .ww-logo-row {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        gap: 0;
+      }
+
+      .ww-vr-logo {
+        width: 29vw;
+        height: 29vw;
+      }
+
+      .ww-celebrations {
+        font-size: 7.5vw;
+        margin-left: -2vw;
+      }
+
       .ww-cards {
         width: 84%;
         gap: 12px;
         padding-bottom: 32px;
-        margin-top: -260px;
+        margin-top: 0;
       }
 
       .ww-card { padding: 16px 10px 26px; }
@@ -400,7 +452,7 @@
 
       .ww-detail {
         width: 88%;
-        margin-top: -100px;
+        margin-top: 0;
         padding-bottom: 40px;
       }
 
@@ -431,6 +483,7 @@
 
   <div class="nav-drawer" id="navDrawer">
     <button class="drawer-close" id="drawerClose" aria-label="Cerrar">✕</button>
+    <img src="vr-logo.webp" alt="VR" style="width:80px;height:80px;object-fit:contain;margin-bottom:16px;" />
     <a href="index.html" onclick="closeMenu()">HOME</a>
     <a href="about.html" onclick="closeMenu()">ABOUT US</a>
     <a href="wedding-week.html" onclick="closeMenu()">WEDDING WEEK</a>
@@ -442,6 +495,11 @@
   <div class="ww-section">
     <img class="ww-hero ww-hero-desktop" src="wedding-week-desktop.webp" alt="" />
     <img class="ww-hero ww-hero-mobile"  src="wedding-week-mobile.webp"  alt="" />
+
+    <div class="ww-logo-row">
+      <img class="ww-vr-logo" src="vr-logo.webp" alt="VR" />
+      <span class="ww-celebrations">Celebrations</span>
+    </div>
 
     <div class="ww-cards" id="wwCards">
       <div class="ww-card" data-day="13">
@@ -658,6 +716,7 @@
       card.addEventListener('click', () => {
         const day = card.dataset.day;
         document.getElementById('wwCards').style.display = 'none';
+        document.querySelector('.ww-logo-row').style.display = 'none';
         document.querySelectorAll('.ww-detail').forEach(d => d.style.display = 'none');
         document.getElementById('detail-' + day).style.display = 'block';
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -667,6 +726,7 @@
     function showCards() {
       document.querySelectorAll('.ww-detail').forEach(d => d.style.display = 'none');
       document.getElementById('wwCards').style.display = 'grid';
+      document.querySelector('.ww-logo-row').style.display = 'flex';
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   </script>
