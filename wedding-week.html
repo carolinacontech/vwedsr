@@ -7,6 +7,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Montserrat:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet" />
   <style>
+    @font-face {
+      font-family: 'Adelia';
+      src: url('adelia.otf') format('opentype'),
+           url('adelia.ttf') format('truetype');
+      font-weight: 100 900;
+      font-style: normal;
+    }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
@@ -23,6 +31,13 @@
     }
 
     /* ── DESKTOP NAV ── */
+    .desktop-nav.scrolled {
+      background: rgba(255, 248, 240, 0.95);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+      transition: background 0.3s ease, backdrop-filter 0.3s ease;
+    }
+
     .desktop-nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -154,10 +169,22 @@
     .ww-section {
     }
 
+    .ww-hero-wrap {
+      position: relative;
+    }
+
     .ww-hero {
       width: 100%;
       display: block;
       padding-top: 56px;
+    }
+
+    .ww-hero-fade {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 55%;
+      background: linear-gradient(to bottom, transparent 10%, #f5ede3 70%);
+      pointer-events: none;
     }
 
     .ww-hero-desktop { display: block; }
@@ -185,7 +212,7 @@
       background: #f5ede3;
       border: 1.5px solid var(--gold);
       border-radius: 10px;
-      box-shadow: inset 0 0 0 5px #f5ede3, inset 0 0 0 7px rgba(201,168,76,0.45);
+      box-shadow: inset 0 0 0 5px #f5ede3, inset 0 0 0 7px rgba(210,120,130,0.55);
       cursor: pointer;
       transition: opacity 0.2s;
     }
@@ -202,7 +229,7 @@
     }
 
     .ww-card-date {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: 34px;
       font-weight: 400;
       color: var(--green);
@@ -210,11 +237,12 @@
     }
 
     .ww-card-month {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 22px;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 16px;
       font-weight: 300;
       color: var(--green);
       margin-top: 4px;
+      letter-spacing: 1px;
     }
 
     .ww-card-diamond {
@@ -240,8 +268,11 @@
     }
 
     .ww-detail-title {
-      font-family: 'Great Vibes', cursive;
+      font-family: 'Adelia', cursive;
       font-size: 52px;
+      font-weight: 400;
+      font-synthesis: none;
+      -webkit-font-smoothing: antialiased;
       color: var(--dark);
       text-align: center;
       margin-bottom: 20px;
@@ -319,7 +350,9 @@
     }
 
     .ww-event-attire {
-      display: inline-block;
+      display: block;
+      width: fit-content;
+      margin: 8px auto 0;
       border: 1.5px solid var(--dark);
       border-radius: 40px;
       padding: 4px 18px;
@@ -329,9 +362,17 @@
       position: relative;
     }
 
+    .ww-flowers-divider {
+      display: block;
+      width: 55%;
+      max-width: 400px;
+      margin: 32px auto 0;
+      opacity: 0.9;
+    }
+
     .ww-back-btn {
       display: block;
-      margin: 28px auto 0;
+      margin: 20px auto 0;
       background: none;
       border: 1.5px solid var(--gold);
       color: var(--gold);
@@ -375,6 +416,8 @@
       .ww-detail-title { font-size: 40px; }
       .ww-event-name { font-size: 22px; }
       .ww-event-info { min-width: 72%; }
+
+      .ww-flowers-divider { width: 80%; }
     }
   </style>
 </head>
@@ -384,8 +427,8 @@
     <a href="index.html">HOME</a>
     <a href="about.html">ABOUT US</a>
     <a href="wedding-week.html">WEDDING WEEK</a>
-    <a href="index.html#attire">ATTIRE</a>
-    <a href="index.html#travel">TRAVEL TIPS</a>
+    <a href="attire.html">ATTIRE</a>
+    <a href="travel-tips.html">TRAVEL TIPS</a>
     <a href="rsvp-vikas-roshni.html" target="_blank" class="nav-rsvp">RSVP</a>
   </nav>
 
@@ -400,14 +443,17 @@
     <a href="index.html" onclick="closeMenu()">HOME</a>
     <a href="about.html" onclick="closeMenu()">ABOUT US</a>
     <a href="wedding-week.html" onclick="closeMenu()">WEDDING WEEK</a>
-    <a href="index.html#attire" onclick="closeMenu()">ATTIRE</a>
-    <a href="index.html#travel" onclick="closeMenu()">TRAVEL TIPS</a>
+    <a href="attire.html" onclick="closeMenu()">ATTIRE</a>
+    <a href="travel-tips.html" onclick="closeMenu()">TRAVEL TIPS</a>
     <a href="rsvp-vikas-roshni.html" target="_blank" onclick="closeMenu()" class="nav-rsvp">RSVP</a>
   </div>
 
   <div class="ww-section">
-    <img class="ww-hero ww-hero-desktop" src="wedding-week-desktop.webp" alt="VR Celebrations" />
-    <img class="ww-hero ww-hero-mobile"  src="wedding-week-mobile.webp"  alt="VR Celebrations" />
+    <div class="ww-hero-wrap">
+      <img class="ww-hero ww-hero-desktop" src="wedding-week-desktop.webp" alt="" />
+      <img class="ww-hero ww-hero-mobile"  src="wedding-week-mobile.webp"  alt="" />
+      <div class="ww-hero-fade"></div>
+    </div>
 
     <div class="ww-cards" id="wwCards">
       <div class="ww-card" data-day="13">
@@ -465,6 +511,7 @@
         <div class="ww-event-attire">Attire: Resort Formal</div>
       </div>
 
+      <img src="flowers-divider.webp" class="ww-flowers-divider" alt="" />
       <button class="ww-back-btn" onclick="showCards()">← Back</button>
     </div>
 
@@ -523,6 +570,7 @@
         <div class="ww-event-attire">Attire: Bollywood Shimmer</div>
       </div>
 
+      <img src="flowers-divider.webp" class="ww-flowers-divider" alt="" />
       <button class="ww-back-btn" onclick="showCards()">← Back</button>
     </div>
 
@@ -569,6 +617,7 @@
         <div class="ww-event-attire">Attire: Black Tie</div>
       </div>
 
+      <img src="flowers-divider.webp" class="ww-flowers-divider" alt="" />
       <button class="ww-back-btn" onclick="showCards()">← Back</button>
     </div>
 
@@ -586,6 +635,7 @@
         <div class="ww-event-attire">Attire: Resort Chic</div>
       </div>
 
+      <img src="flowers-divider.webp" class="ww-flowers-divider" alt="" />
       <button class="ww-back-btn" onclick="showCards()">← Back</button>
     </div>
 
@@ -609,8 +659,11 @@
     drawerClose.addEventListener('click', closeMenu);
 
     const navBarMobile = document.getElementById('navBarMobile');
+    const desktopNav = document.querySelector('.desktop-nav');
     window.addEventListener('scroll', () => {
-      navBarMobile.classList.toggle('scrolled', window.scrollY > 10);
+      const scrolled = window.scrollY > 10;
+      navBarMobile.classList.toggle('scrolled', scrolled);
+      desktopNav.classList.toggle('scrolled', scrolled);
     });
 
     document.querySelectorAll('.ww-card').forEach(card => {
