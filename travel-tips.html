@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Travel Tips — Panama</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@400;500;600&family=Montserrat:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+  @font-face {
+    font-family: 'Adelia';
+    src: url('adelia.otf') format('opentype'), url('adelia.ttf') format('truetype');
+    font-weight: 100 900; font-style: normal;
+  }
+
+  /* ── DESKTOP NAV ── */
+  .desktop-nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    height: 56px; background: transparent;
+    display: flex; align-items: center; justify-content: center; gap: 28px;
+  }
+  .desktop-nav a {
+    text-decoration: none; font-size: 10px; font-weight: 500;
+    letter-spacing: 2.5px; color: #3d5a3e;
+    font-family: 'Montserrat', sans-serif;
+    transition: color 0.2s;
+    text-shadow: 0 1px 6px rgba(255,255,255,0.8), 0 0 12px rgba(255,255,255,0.6);
+  }
+  .desktop-nav a:hover { color: #C9A84C; }
+  .desktop-nav.scrolled {
+    background: rgba(255,248,240,0.95); backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    transition: background 0.3s ease;
+  }
+  .nav-rsvp { font-family: 'Great Vibes', cursive !important; font-size: 32px !important; letter-spacing: 0 !important; text-transform: lowercase; }
+
+  /* ── HAMBURGER ── */
+  .hamburger {
+    display: none; position: fixed; top: 14px; right: 20px; z-index: 300;
+    flex-direction: column; justify-content: center; gap: 5px;
+    width: 40px; height: 40px; cursor: pointer;
+    background: none; border: none; padding: 0; align-items: center;
+  }
+  .hamburger span { display: block; width: 26px; height: 2px; background: #3a3028; border-radius: 2px; transition: all 0.3s ease; }
+  .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+  .nav-bar-mobile {
+    display: none; position: fixed; top: 0; left: 0; right: 0;
+    height: 56px; z-index: 290; background: transparent;
+    transition: background 0.3s ease;
+  }
+  .nav-bar-mobile.scrolled { background: rgba(255,248,240,0.95); backdrop-filter: blur(6px); border-bottom: 1px solid rgba(201,168,76,0.2); }
+
+  .nav-drawer {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 250;
+    background: rgba(255,248,240,0.98); backdrop-filter: blur(10px);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    min-height: 100dvh; transform: translateY(-100%); opacity: 0;
+    pointer-events: none; transition: all 0.35s ease;
+  }
+  .nav-drawer.open { transform: translateY(0); opacity: 1; pointer-events: all; }
+  .nav-drawer a {
+    text-decoration: none; font-size: 11px; font-weight: 500; letter-spacing: 4px;
+    color: #3a3028; padding: 18px 0; width: 100%; text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    border-bottom: 1px solid rgba(201,168,76,0.12); transition: color 0.2s;
+  }
+  .nav-drawer a:first-child { border-top: 1px solid rgba(201,168,76,0.12); }
+  .nav-drawer a:hover { color: #C9A84C; }
+  .drawer-close {
+    position: absolute; top: 20px; left: 50%; transform: translateX(-50%);
+    width: 40px; height: 40px; border-radius: 50%;
+    background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.3);
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    font-size: 18px; color: #3a3028;
+  }
+
+  @media (max-width: 767px) {
+    .desktop-nav { display: none !important; }
+    .hamburger { display: flex; }
+    .nav-bar-mobile { display: block; }
+  }
+</style>
+<style>
+  :root{
+    --cream: #f3efe6;
+    --cream-deep: #ece5d6;
+    --ink: #35362c;
+    --green: #445939;
+    --line: #1a1a1a;
+    --white: #ffffff;
+
+    --font-script: 'Alex Brush', cursive;
+    --font-serif: 'Cormorant Garamond', serif;
+    --font-sans: 'Poppins', sans-serif;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  html{ scroll-behavior:smooth; }
+  body{
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--font-serif);
+    font-size: 19px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{ max-width:100%; display:block; }
+  a{ color:inherit; text-decoration:none; }
+  .eyebrow{
+    font-family: var(--font-sans);
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    font-size:.78rem;
+    font-weight:500;
+  }
+  .wrap{
+    max-width:1100px;
+    margin:0 auto;
+    padding:0 6vw;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    height:100vh;
+    min-height:560px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    background:
+      linear-gradient(180deg, rgba(20,20,15,.25), rgba(20,20,15,.55)),
+      url('images/pexels-kelly-33803474.jpg') center/cover no-repeat;
+  }
+  .hero h1{
+    font-family:var(--font-script);
+    color:#fff;
+    font-size:clamp(3.5rem, 10vw, 7.5rem);
+    font-weight:400;
+    line-height:1;
+  }
+
+  /* ---------- INTRO ---------- */
+  .intro{
+    text-align:center;
+    padding:5.5rem 6vw 4rem;
+  }
+  .intro h2{
+    font-family:var(--font-serif);
+    font-style:italic;
+    font-weight:600;
+    font-size:clamp(1.3rem, 2.6vw, 1.7rem);
+    letter-spacing:.02em;
+    max-width:640px;
+    margin:0 auto 1.4rem;
+  }
+  .intro p{
+    max-width:560px;
+    margin:0 auto;
+    color:#4a483f;
+  }
+
+  /* ---------- ACCORDION ---------- */
+  .accordion-section{
+    padding:1rem 6vw 5rem;
+  }
+  .accordion-section .center-title{
+    text-align:center;
+    margin-bottom:2rem;
+  }
+  .center-title .eyebrow{ display:block; margin-bottom:.4rem; color:#6b6a60; }
+  .center-title h3{
+    font-family:var(--font-script);
+    color:var(--green);
+    font-weight:400;
+    font-size:clamp(2.6rem, 6vw, 3.8rem);
+    line-height:1.05;
+  }
+  .accordion{ max-width:760px; margin:0 auto; }
+  .accordion details{
+    border-bottom:1px solid var(--line);
+  }
+  .accordion details:first-child{ border-top:1px solid var(--line); }
+  .accordion summary{
+    list-style:none;
+    cursor:pointer;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:1.15rem .2rem;
+    font-family:var(--font-sans);
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    font-size:.85rem;
+    font-weight:500;
+  }
+  .accordion summary::-webkit-details-marker{ display:none; }
+  .accordion summary::after{
+    content:'';
+    width:10px; height:10px;
+    border-right:1.5px solid var(--ink);
+    border-bottom:1.5px solid var(--ink);
+    transform:rotate(45deg);
+    transition:transform .3s ease;
+    flex-shrink:0;
+    margin-left:1rem;
+  }
+  .accordion details[open] summary::after{ transform:rotate(-135deg); }
+  .accordion .panel{
+    padding:0 .2rem 1.4rem;
+    color:#4a483f;
+    max-width:640px;
+  }
+
+  /* ---------- QUOTE / CATEGORY BAND ---------- */
+  .band{
+    position:relative;
+    padding:6rem 6vw 3rem;
+    text-align:center;
+    color:#fff;
+    background:
+      linear-gradient(180deg, rgba(15,15,12,.35), rgba(15,15,12,.6)),
+      url('images/sombreros.jpg') center/cover no-repeat;
+  }
+  .band h2{
+    font-family:var(--font-script);
+    font-weight:400;
+    font-size:clamp(2.4rem, 6vw, 4rem);
+    line-height:1.1;
+    max-width:640px;
+    margin:0 auto 1.2rem;
+  }
+  .band p{
+    max-width:520px;
+    margin:0 auto 2.6rem;
+    color:#f1efe6;
+  }
+  .category-nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:.9rem;
+    max-width:760px;
+    margin:0 auto;
+  }
+  .category-nav a{
+    font-family:var(--font-sans);
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    font-size:.78rem;
+    padding:.85rem 1.3rem;
+    border:1px solid rgba(255,255,255,.7);
+    transition:background .25s ease, color .25s ease;
+  }
+  .category-nav a:hover{ background:#fff; color:var(--ink); }
+
+  /* ---------- CAROUSEL SECTIONS ---------- */
+  .category{
+    padding:4.5rem 0 3.5rem;
+    border-bottom:1px solid #ddd6c4;
+  }
+  .category .center-title{ padding:0 6vw; }
+  .carousel{
+    display:flex;
+    gap:1.6rem;
+    overflow-x:auto;
+    padding:0 6vw 1rem;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+  }
+  .carousel::-webkit-scrollbar{ height:6px; }
+  .carousel::-webkit-scrollbar-thumb{ background:#cfc7b2; }
+  .card{
+    scroll-snap-align:start;
+    flex:0 0 300px;
+    background:transparent;
+    height:420px;
+    perspective:1400px;
+    cursor:pointer;
+  }
+  .card-inner{
+    position:relative;
+    width:100%;
+    height:100%;
+    transition:transform .6s cubic-bezier(.65,0,.35,1);
+    transform-style:preserve-3d;
+  }
+  .card.flipped .card-inner{ transform:rotateY(180deg); }
+  .card-face{
+    position:absolute;
+    inset:0;
+    backface-visibility:hidden;
+    -webkit-backface-visibility:hidden;
+    overflow:hidden;
+  }
+  .card-front{
+    background:var(--white);
+    display:flex;
+    flex-direction:column;
+  }
+  .card-front img{
+    width:100%;
+    height:230px;
+    object-fit:cover;
+    flex-shrink:0;
+  }
+  .card-front .num{
+    font-family:var(--font-script);
+    color:var(--green);
+    font-size:2rem;
+    line-height:1;
+    padding:.6rem 0 .2rem 1rem;
+  }
+  .card-front h4{
+    font-family:var(--font-sans);
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    font-size:.92rem;
+    font-weight:600;
+    padding:0 1rem;
+  }
+  .card-front .tap-hint{
+    margin-top:auto;
+    font-family:var(--font-sans);
+    font-size:.68rem;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:#9a9787;
+    padding:.6rem 1rem 1rem;
+  }
+  .card-back{
+    transform:rotateY(180deg);
+    background:var(--ink);
+    color:var(--cream);
+    padding:1.6rem 1.3rem;
+    display:flex;
+    flex-direction:column;
+    overflow-y:auto;
+  }
+  .card-back .num{
+    font-family:var(--font-sans);
+    letter-spacing:.1em;
+    font-size:.8rem;
+    color:#b9b6a8;
+    margin-bottom:.3rem;
+  }
+  .card-back h4{
+    font-family:var(--font-sans);
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    font-size:.95rem;
+    font-weight:600;
+    padding-bottom:.8rem;
+    border-bottom:1px solid rgba(243,239,230,.35);
+    margin-bottom:.9rem;
+  }
+  .card-back p{
+    font-size:.92rem;
+    color:#ded9c9;
+    flex:1;
+  }
+  .card-back .back-btn{
+    background:none;
+    border:none;
+    color:var(--cream);
+    font-family:var(--font-sans);
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    font-size:.72rem;
+    cursor:pointer;
+    text-align:left;
+    padding:0;
+    margin-top:1rem;
+  }
+  .card-back .map-link{
+    display:inline-block;
+    font-family:var(--font-sans);
+    font-size:.76rem;
+    letter-spacing:.02em;
+    color:#d8e2c9;
+    text-decoration:underline;
+    text-underline-offset:3px;
+    margin-top:.9rem;
+  }
+  .card-back .map-link:hover{ color:#fff; }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--green);
+    color:var(--cream);
+    text-align:center;
+    padding:3rem 6vw;
+  }
+  footer .foot-nav{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:1.6rem;
+    font-family:var(--font-sans);
+    text-transform:uppercase;
+    letter-spacing:.12em;
+    font-size:.78rem;
+  }
+
+  @media (max-width:640px){
+    body{ font-size:17px; }
+    .carousel{ gap:1rem; }
+    .card{ flex-basis:76vw; }
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    .menu, .accordion summary::after, .category-nav a, .card-inner{ transition:none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- DESKTOP NAV -->
+<nav class="desktop-nav" id="desktopNav">
+  <a href="index.html">HOME</a>
+  <a href="about.html">ABOUT US</a>
+  <a href="wedding-week.html">WEDDING WEEK</a>
+  <a href="attire.html">ATTIRE</a>
+  <a href="travel-tips.html">TRAVEL TIPS</a>
+  <a href="rsvp-vikas-roshni.html" target="_blank" class="nav-rsvp">RSVP</a>
+</nav>
+
+<div class="nav-bar-mobile" id="navBarMobile"></div>
+
+<button class="hamburger" id="hamburger" aria-label="Menu">
+  <span></span><span></span><span></span>
+</button>
+
+<div class="nav-drawer" id="navDrawer">
+  <button class="drawer-close" id="drawerClose" aria-label="Cerrar">✕</button>
+  <img src="vr-logo.webp" alt="VR" style="width:80px;height:80px;object-fit:contain;margin-bottom:16px;" />
+  <a href="index.html" onclick="closeMenu()">HOME</a>
+  <a href="about.html" onclick="closeMenu()">ABOUT US</a>
+  <a href="wedding-week.html" onclick="closeMenu()">WEDDING WEEK</a>
+  <a href="attire.html" onclick="closeMenu()">ATTIRE</a>
+  <a href="travel-tips.html" onclick="closeMenu()">TRAVEL TIPS</a>
+  <a href="rsvp-vikas-roshni.html" target="_blank" onclick="closeMenu()" class="nav-rsvp">RSVP</a>
+</div>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <h1>Travel Tips</h1>
+</header>
+
+<!-- INTRO -->
+<section class="intro">
+  <h2>We&rsquo;re so excited to celebrate with you in Panama!</h2>
+  <p>To help you make the most of your trip, here&rsquo;s a curated guide with our top recommendations&mdash;from must-see sights to unforgettable dining and experiences.</p>
+</section>
+
+<!-- GENERAL TRAVEL TIPS ACCORDION -->
+<section class="accordion-section">
+  <div class="center-title">
+    <span class="eyebrow">General</span>
+    <h3>Travel Tips</h3>
+  </div>
+
+  <div class="accordion">
+    <details>
+      <summary>Visa &amp; Entry Requirements</summary>
+      <div class="panel">
+        <p>Many nationalities (including the US, UK, EU, and Canada) do not require a visa for short tourist stays in Panama. Travelers are typically granted entry for up to 90&ndash;180 days. You may be asked to show proof of onward travel and sufficient funds. Passport validity of at least 6 months is recommended. Please check your specific country&rsquo;s requirements in advance.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Getting Around</summary>
+      <div class="panel">
+        <p>Uber and private transportation are widely available, reliable, and generally affordable throughout Panama City. Traffic can be heavy during peak hours, so allow extra time when heading to events or reservations.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>What to Wear</summary>
+      <div class="panel">
+        <p>Panama has a warm, tropical climate year-round, with high humidity and temperatures typically ranging between 24&ndash;32&deg;C (75&ndash;90&deg;F). Dress in light, breathable fabrics such as linen and cotton to stay comfortable. Flowy outfits, sandals, and comfortable walking shoes are ideal for daytime exploring. Don&rsquo;t forget sunglasses, sunscreen, and a light layer for air-conditioned indoor spaces.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Dining Reservations</summary>
+      <div class="panel">
+        <p>Panama City has a vibrant dining scene, and many of the top restaurants fill up quickly&mdash;especially on weekends. We highly recommend making reservations in advance for fine dining and popular rooftop spots.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Booking Experiences</summary>
+      <div class="panel">
+        <p>Island tours, yacht charters, and canal experiences are in high demand. Booking ahead (particularly for weekends or group outings) ensures availability and smoother planning.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Currency &amp; Payments</summary>
+      <div class="panel">
+        <p>Panama uses both the Panamanian Balboa and the US Dollar (1:1), and USD is accepted everywhere. Credit cards are widely used, but it&rsquo;s helpful to carry small bills for taxis, tips, and local vendors.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Language</summary>
+      <div class="panel">
+        <p>Spanish is the official language, but English is commonly spoken in hotels, restaurants, and tourist areas&mdash;so getting around is easy for international guests.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Safety</summary>
+      <div class="panel">
+        <p>Panama City is generally safe, especially in well-known areas like Casco Antiguo, Punta Pacifica, and San Francisco. As with any major city, it&rsquo;s best to stay aware of your surroundings and avoid carrying valuables unnecessarily.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Tipping Etiquette</summary>
+      <div class="panel">
+        <p>A service charge is often included in restaurant bills, but additional tipping (10%&ndash;20%) for excellent service is appreciated. Tipping drivers, hotel staff, and guides is also customary.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- BAND / CATEGORY NAV -->
+<section class="band">
+  <h2>Bridge of the world, heart of the universe.</h2>
+  <p>Between two oceans, Panama invites you to discover a country where modernity and tradition intertwine in every corner.</p>
+  <nav class="category-nav">
+    <a href="#things-to-do">Things to Do</a>
+    <a href="#beach-islands">Beach &amp; Island Experiences</a>
+    <a href="#dining">Dining</a>
+    <a href="#city-hotspots">City Hotspots</a>
+    <a href="#brunch-cafes">Brunch and Cafes</a>
+  </nav>
+</section>
+
+<!-- THINGS TO DO -->
+<section class="category" id="things-to-do">
+  <div class="center-title">
+    <h3 style="font-family:var(--font-script); color:var(--green); font-size:clamp(2rem,5vw,2.8rem); font-weight:400;">Things to Do in Panama City</h3>
+  </div>
+  <div class="carousel">
+    <article class="card" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-face card-front">
+          <img src="images/2023-05-30-001-wlu-b-cvm.jpg" alt="Casco Antiguo">
+          <div class="num">01</div>
+          <h4>Casco Antiguo (Old Town)</h4>
+          <span class="tap-hint">tap to read more</span>
+        </div>
+        <div class="card-face card-back">
+          <div class="num">01</div>
+          <h4>Casco Antiguo (Old Town)</h4>
+          <p>A beautifully preserved historic district filled with colonial architecture, charming plazas, boutique shops, and vibrant rooftop bars&mdash;perfect for exploring day or night.</p>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=San+Felipe%2C+Panama+City%2C+Panamá+Province%2C+Panama&query_place_id=ChIJDdtX0DSvrI8R0DyXDA4C-Mg" target="_blank" rel="noopener" onclick="event.stopPropagation()">&#128205; San Felipe, Panama City, Panamá Province, Panama</a>
+          <button class="back-btn" onclick="event.stopPropagation(); this.closest('.card').classList.remove('flipped')">&larr; back</button>
+        </div>
+      </div>
+    </article>
+    <article class="card" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-face card-front">
+          <img src="images/aerea-elcauseway-01-1.jpg" alt="Panama Canal – Miraflores">
+          <div class="num">02</div>
+          <h4>Panama Canal &ndash; Miraflores Visitor Center</h4>
+          <span class="tap-hint">tap to read more</span>
+        </div>
+        <div class="card-face card-back">
+          <div class="num">02</div>
+          <h4>Panama Canal &ndash; Miraflores Visitor Center</h4>
+          <p>One of the world&rsquo;s greatest engineering marvels. Watch massive ships pass through the locks and learn about the canal&rsquo;s fascinating history.</p>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Miraflores+Visitor+Center%2C+Panama+City%2C+Panama&query_place_id=ChIJZ0w5Lk2mrI8RRkUdX6_3je4" target="_blank" rel="noopener" onclick="event.stopPropagation()">&#128205; Miraflores Visitor Center, Panama City, Panama</a>
+          <button class="back-btn" onclick="event.stopPropagation(); this.closest('.card').classList.remove('flipped')">&larr; back</button>
+        </div>
+      </div>
+    </article>
+    <article class="card" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-face card-front">
+          <img src="images/panama-viejo-2.jpg" alt="Panamá Viejo">
+          <div class="num">03</div>
+          <h4>Panam&aacute; Viejo (Old Panama Ruins)</h4>
+          <span class="tap-hint">tap to read more</span>
+        </div>
+        <div class="card-face card-back">
+          <div class="num">03</div>
+          <h4>Panam&aacute; Viejo (Old Panama Ruins)</h4>
+          <p>A UNESCO-listed archaeological site featuring the remains of the original Panama City, complete with a scenic lookout tower.</p>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Vía+Cincuentenario%2C+Panamá%2C+Panama&query_place_id=ChIJP3CKFZeprI8R86tRsWFm9Rc" target="_blank" rel="noopener" onclick="event.stopPropagation()">&#128205; Vía Cincuentenario, Panamá, Panama</a>
+          <button class="back-btn" onclick="event.stopPropagation(); this.closest('.card').classList.remove('flipped')">&larr; back</button>
+        </div>
+      </div>
+    </article>
+    <article class="card" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-face card-front">
+          <img src="images/aerea-elcauseway-01-1.jpg" alt="Amador Causeway">
+          <div class="num">04</div>
+          <h4>Amador Causeway (Calzada de Amador)</h4>
+          <span class="tap-hint">tap to read more</span>
+        </div>
+        <div class="card-face card-back">
+          <div class="num">04</div>
+          <h4>Amador Causeway (Calzada de Amador)</h4>
+          <p>A picturesque oceanfront road connecting several small islands, offering breathtaking views of the Panama City skyline&mdash;ideal for biking or a sunset stroll.</p>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Calz.+de+Amador%2C+Panamá%2C+Panama&query_place_id=ChIJJ-RVDxKvrI8RL4Nip0mGh2k" target="_blank" rel="noopener" onclick="event.stopPropagation()">&#128205; Calz. de Amador, Panamá, Panama</a>
+          <button class="back-btn" onclick="event.stopPropagation(); this.closest('.card').classList.remove('flipped')">&larr; back</button>
+        </div>
+      </div>
+    </article>
+    <article class="card" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-face card-front">
+          <img src="images/8784_05-1-1.jpg" alt="Biomuseo">
+          <div class="num">05</div>
+          <h4>Biomuseo</h4>
+          <span class="tap-hint">tap to read more</span>
+        </div>
+        <div class="card-face card-back">
+          <div class="num">05</div>
+          <h4>Biomuseo</h4>
+          <p>An architecturally striking museum designed by Frank Gehry, celebrating Panama&rsquo;s unique biodiversity and ecological significance.</p>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Calz.+de+Amador+136%2C+Panamá%2C+Panama&query_place_id=ChIJva9mbEKvrI8Ru8pepGP3xkQ" target="_blank" rel="noopener" onclick="event.stopPropagation()">&#128205; Calz. de Amador 136, Panamá, Panama</a>
+          <button class="back-btn" onclick="event.stopPropagation(); this.closest('.card').classList.remove('flipped')">&larr; back</button>
+        </div>
+      </div>
+    </article>
+    <article class="card" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-face card-front">
+          <img src="images/panama-cinta-costera.png" alt="Cinta Costera">
+          <div class="num">06</div>
+          <h4>Cinta Costera</h4>
+          <span class="tap-hint">tap to read more</span>
+        </div>
+        <div class="card-face card-back">
+          <div class="num">06</div>
+          <h4>Cinta Costera</h4>
+          <p>A scenic waterfront promenade perfect for walking, jogging, or enjoying sunset views along the Pacific coast.</p>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Cinta+Costera%2C+Panamá%2C+Panama&query_place_id=ChIJ59sFuMSorI8RUULKJhY8SKk" target="_blank" rel="noopener" onclick="event.stopPropagation()">&#128205; Cinta Costera, Panamá, Panama</a>
+          <button class="back-btn" onclick="event.stopPropagation(); this.closest('.card').classList.remove('flipped')">&larr; back</button>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- BEACH & ISLAND -->
+<section class="category" id="beach-islands">
+  <div class="center-title">
+    <h3 style="font-family:var(--font-script); color:var(--green); font-size:clamp(2rem,5vw,2.8rem); font-weight:400;">Beach &amp; Island Experiences</h3>
+  </div>
+  <div class="carousel">
+    <article class="card" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-face card-front">
+          <img src="images/35.jpg" alt="Taboga Island">
+          <div class="num">01</div>
+          <h4>Taboga Island (Isla de las Flores)</h4>
+          <span class="tap-hint">tap to read more</span>
+        </div>
+        <div class="card-face card-back">
+          <div class="num">01</div>
+          <h4>Taboga Island (Isla de las Flores)</h4>
+          <p>A charming island just 20 km from the city, known for its sandy beaches, colorful village, and relaxed atmosphere&mdash;perfect for a quick escape.<br>&#128739; Ferry from Amador (30&ndash;45 min)</p>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Taboga+Island%2C+Panamá+Province%2C+Panama&query_place_id=ChIJQ4W6o6iwrI8RDJd_fag_76A" target="_blank" rel="noopener" onclick="event.stopPropagation()">&#128205; Taboga Island, Panamá Province, Panama</a>
+          <button class="back-btn" onclick="event.stopPropagation(); this.closest('.card').classList.remove('flipped')">&larr; back</button>
+        </div>
+      </div>
+    </article>
+    <article class="card" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-face card-front">
+          <img src="images/isla-contadora-pearl-islands-img-1-2.jpg" alt="Contadora Island">
+          <div class="num">02</div>
+          <h4>Contadora Island &ndash; Pearl Islands</h4>
+          <span class="tap-hint">tap to read more</span>
+        </div>
+        <div class="card-face card-back">
+          <div class="num">02</div>
+          <h4>Contadora Island &ndash; Pearl Islands</h4>
+          <p>An exclusive island destination with crystal-clear waters and pristine white sand beaches, ideal for a luxurious day trip.<br>&#9973; Ferry (approx. 90 min) or private charter</p>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Contadora+Island%2C+Panamá+Province%2C+Panama&query_place_id=ChIJvXClzjY-U44RMQBU7Y9hguE" target="_blank" rel="noopener" onclick="event.stopPropagation()">&#128205; Contadora Island, Panamá Province, Panama</a>
+          <button class="back-btn" onclick="event.stopPropagation(); this.closest('.card').classList.remove('flipped')">&larr; back</button>
+        </div>
+      </div>
+    </article>
+    <article class="card" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-face card-front">
+          <img src="images/isla-mogo-mogo-panama-10-1600x719.jpg" alt="Isla Mogo Mogo">
+          <div class="num">03</div>
+          <h4>Isla Mogo Mogo &amp; Pearl Islands</h4>
+          <span class="tap-hint">tap to read more</span>
+        </div>
+        <div class="card-face card-back">
+          <div class="num">03</div>
+          <h4>Isla Mogo Mogo &amp; Pearl Islands</h4>
+          <p>Unspoiled, secluded beaches perfect for private yacht experiences and a more intimate connection with nature.</p>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Mogo+Mogo+Island%2C+Panamá+Province%2C+Panama&query_place_id=ChIJ9RZMe_M9U44Rlc3u6AA6K5s" target="_blank" rel="noopener" onclick="event.stopPropagation()">&#128205; Mogo Mogo Island, Panamá Province, Panama</a>
+          <button class="back-btn" onclick="event.stopPropagation(); this.closest('.card').classList.remove('flipped')">&larr; back</button>
+        </div>
+      </div>
+    </article>
+    <article class="card" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-face card-front">
+          <img src="images/large_surfing_at_isla_grande_colon_province_panam_2_0bee3dba-3034-4860-9053-2af066a6d49d.jpg" alt="Isla Grande, Colón">
+          <div class="num">04</div>
+          <h4>Caribbean Escape &ndash; Col&oacute;n (Isla Grande / Portobelo)</h4>
+          <span class="tap-hint">tap to read more</span>
+        </div>
+        <div class="card-face card-back">
+          <div class="num">04</div>
+          <h4>Caribbean Escape &ndash; Col&oacute;n (Isla Grande / Portobelo)</h4>
+          <p>Discover turquoise waters, vibrant Afro-Caribbean culture, and a completely different coastal vibe just outside the city.<br>&#9973; Boat access from Portobelo, Col&oacute;n.</p>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Isla+Grande%2C+Colón+Province%2C+Panama&query_place_id=ChIJeZjXVPQlq48RpYPNl0zBHbM" target="_blank" rel="noopener" onclick="event.stopPropagation()">&#128205; Isla Grande, Colón Province, Panama</a>
+          <button class="back-btn" onclick="event.stopPropagation(); this.closest('.card').classList.remove('flipped')">&larr; back</button>
+        </div>
+      </div>
+    </article>
+    <article class="card" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-face card-front">
+          <img src="images/images_2.jpg" alt="Kuna Yala / San Blas">
+          <div class="num">05</div>
+          <h4>Kuna Yala &ndash; San Blas</h4>
+          <span class="tap-hint">tap to read more</span>
+        </div>
+        <div class="card-face card-back">
+          <div class="num">05</div>
+          <h4>Kuna Yala &ndash; San Blas</h4>
+          <p>Guna Yala (San Blas) is an indigenous region of Panama with 365+ white-sand islands and clear waters, known for its authentic Guna culture.<br>Reach it via Cart&iacute; from Panama City, then by boat.</p>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=San+Blas+Islands%2C+Guna+Yala+Comarca%2C+Panama&query_place_id=ChIJHWTb-_X6VI4RHE2E9WVMQWM" target="_blank" rel="noopener" onclick="event.stopPropagation()">&#128205; San Blas Islands, Guna Yala Comarca, Panama</a>
+          <button class="back-btn" onclick="event.stopPropagation(); this.closest('.card').classList.remove('flipped')">&larr; back</button>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- DINING -->
+<section class="category" id="dining">
+  <div class="center-title">
+    <h3 style="font-family:var(--font-script); color:var(--green); font-size:clamp(2rem,5vw,2.8rem); font-weight:400;">Dining</h3>
+  </div>
+  <div class="carousel">
+    <article class="card" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-face card-front">
+          <img src="images/481070136_1027400469421667_7359304575001157922_n.jpg" alt="Makoto">
+          <div class="num">01</div>
+          <h4>Makoto</h4>
+          <span class="tap-hint">tap to read more</span>
+        </div>
+        <div class="card-face card-back">
+          <div class="num">01</div>
+          <h4>Makoto</h4>
+          <p>Makoto Panama offers a high-end Japanese dining experience with beautifully crafted dishes, a stylish atmosphere, and exceptional service. It&rsquo;s a perfect spot for a memorable night out in Panama City.</p>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Kenex+Plaza%2C+C.+59+Este%2C+Obarrio%2C+Panamá%2C+Panama&query_place_id=ChIJVcviqf2orI8RQuqzC5rn5bc" target="_blank" rel="noopener" onclick="event.stopPropagation()">&#128205; Kenex Plaza, C. 59 Este, Obarrio, Panamá, Panama</a>
+          <button class="back-btn" onclick="event.stopPropagation(); this.closest('.card').classList.remove('flipped')">&larr; back</button>
+        </div>
+      </div>
+    </article>
+    <article class="card" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-face card-front">
+          <img src="images/caption.jpg" alt="Azahar Panama">
+          <div class="num">02</div>
+          <h4>Azahar Panama</h4>
+          <span class="tap-hint">tap to read more</span>
+        </div>
+        <div class="card-face card-back">
+          <div class="num">02</div>
+          <h4>Azahar Panama</h4>
+          <p>Azahar Panama is a sophisticated rooftop restaurant offering stunning city views, creative cuisine, and a vibrant atmosphere. It&rsquo;s the perfect place for cocktails, dining, and enjoying Panama City&rsquo;s nightlife.</p>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Yoo+&+Arts+Tower%2C+Av.+Vasco+Núñez+de+Balboa+Piso+7%2C+Panamá%2C+Panama&query_place_id=ChIJRVVFAeeorI8RHkPxhPptSJs" target="_blank" rel="noopener" onclick="event.stopPropagation()">&#128205; Yoo & Arts Tower, Av. Vasco Núñez de Balboa Piso 7, Panamá, Panama</a>
+          <button class="back-btn" onclick="event.stopPropagation(); this.closest('.card').classList.remove('flipped')">&larr; back</button>
+        </div>
+      </div>
+    </article>
+    <article class="card" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-face card-front">
+          <img src="images/izakaya-rooftop-bar.jpg" alt="Ricominciare">
+          <div class="num">03</div>
+          <h4>Ricominciare</h4>
+          <span class="tap-hint">tap to read more</span>
+        </div>
+        <div class="card-face card-back">
+          <div class="num">03</div>
+          <h4>Ricominciare</h4>
+          <p>Ricominciare Panama is a cozy Italian restaurant known for its authentic flavors, homemade pasta, and warm atmosphere. It&rsquo;s a great spot for a relaxed and delicious dining experience in Panama City.</p>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Oceanía+Business+Plaza%2C+Torre+1000%2C+Panamá%2C+Panama&query_place_id=ChIJ_7mXaDaprI8R-vEyMvbCh7Q" target="_blank" rel="noopener" onclick="event.stopPropagation()">&#128205; Oceanía Business Plaza, Torre 1000, Panamá, Panama</a>
+          <button class="back-btn" onclick="event.stopPropagation(); this.closest('.card').classList.remove('flipped')">&larr; back</button>
+        </div>
+      </div>
+    </article>
+    <article class="card" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-face card-front">
+          <img src="images/latam50br25-1-50-list-cantinadeltigre-3.jpg" alt="Cantina del Tigre">
+          <div class="num">04</div>
+          <h4>Cantina del Tigre</h4>
+          <span class="tap-hint">tap to read more</span>
+        </div>
+        <div class="card-face card-back">
+          <div class="num">04</div>
+          <h4>Cantina del Tigre</h4>
+          <p>A bold and contemporary spot known for inventive small plates, vibrant flavors, and a fun, energetic setting with vegetarian-friendly options.</p>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Plaza+Centenario%2C+C.+68+Este%2C+Panamá%2C+Panama&query_place_id=ChIJb8-lq_-prI8RSAAmaaTeuiE" target="_blank" rel="noopener" onclick="event.stopPropagation()">&#128205; Plaza Centenario, C. 68 Este, Panamá, Panama</a>
+          <button class="back-btn" onclick="event.stopPropagation(); this.closest('.card').classList.remove('flipped')">&larr; back</button>
+        </div>
+      </div>
+    </article>
+    <article class="card" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-face card-front">
+          <img src="images/screenshot-2024-04-14-at-12_43_31_pm-818x1024.jpg" alt="Fonda Lo Que Hay">
+          <div class="num">05</div>
+          <h4>Fonda Lo Que Hay</h4>
+          <span class="tap-hint">tap to read more</span>
+        </div>
+        <div class="card-face card-back">
+          <div class="num">05</div>
+          <h4>Fonda Lo Que Hay</h4>
+          <p>A beloved local favorite serving elevated Panamanian comfort food, combining traditional recipes with a modern twist in a casual, lively environment.</p>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=C.+José+D.+de+la+Obaldía%2C+Casco+Viejo%2C+Panamá%2C+Panama&query_place_id=ChIJATwe3TSvrI8R8PoiICsyV5U" target="_blank" rel="noopener" onclick="event.stopPropagation()">&#128205; C. José D. de la Obaldía, Casco Viejo, Panamá, Panama</a>
+          <button class="back-btn" onclick="event.stopPropagation(); this.closest('.card').classList.remove('flipped')">&larr; back</button>
+        </div>
+      </div>
+    </article>
+    <article class="card" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-face card-front">
+          <img src="images/maimai-platos-tragos-24-1024x586.jpg" alt="Mai Mai">
+          <div class="num">06</div>
+          <h4>Mai Mai</h4>
+          <span class="tap-hint">tap to read more</span>
+        </div>
+        <div class="card-face card-back">
+          <div class="num">06</div>
+          <h4>Mai Mai</h4>
+          <p>A stylish Nikkei restaurant blending Japanese and Peruvian influences with fresh local seafood, offering a unique and flavorful dining experience. Open in the evenings.</p>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Panamá+Design+Center+(PDC)%2C+Panamá%2C+Panama&query_place_id=ChIJrTyFhrCprI8RjUHpLR6rd-U" target="_blank" rel="noopener" onclick="event.stopPropagation()">&#128205; Panamá Design Center (PDC), Panamá, Panama</a>
+          <button class="back-btn" onclick="event.stopPropagation(); this.closest('.card').classList.remove('flipped')">&larr; back</button>
+        </div>
+      </div>
+    </article>
+    <article class="card" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-face card-front">
+          <img src="images/caribbean-flavors.jpg" alt="Octo SmokeHouse">
+          <div class="num">07</div>
+          <h4>Octo SmokeHouse</h4>
+          <span class="tap-hint">tap to read more</span>
+        </div>
+        <div class="card-face card-back">
+          <div class="num">07</div>
+          <h4>Octo SmokeHouse</h4>
+          <p>Every dish brings you the taste of the Caribbean with fresh ingredients, bold flavors, and a vibrant atmosphere.</p>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=C.+64+Este%2C+Panamá%2C+Panama&query_place_id=ChIJ82mznqyprI8RaVk_aDZhe_o" target="_blank" rel="noopener" onclick="event.stopPropagation()">&#128205; C. 64 Este, Panamá, Panama</a>
+          <button class="back-btn" onclick="event.stopPropagation(); this.closest('.card').classList.remove('flipped')">&larr; back</button>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- CITY HOTSPOTS -->
+<section class="category" id="city-hotspots">
+  <div class="center-title">
+    <h3 style="font-family:var(--font-script); color:var(--green); font-size:clamp(2rem,5vw,2.8rem); font-weight:400;">City Hotspots</h3>
+  </div>
+  <div class="carousel">
+    <article class="card" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-face card-front">
+          <img src="images/main-bar-where-you-can.jpg" alt="Poin Panama">
+          <div class="num">01</div>
+          <h4>Poin Panama</h4>
+          <span class="tap-hint">tap to read more</span>
+        </div>
+        <div class="card-face card-back">
+          <div class="num">01</div>
+          <h4>Poin Panama</h4>
+          <p>A unique experience combining dining with adventure, where guests can enjoy great food alongside thrilling zipline views over the city.</p>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Panamá%2C+Panama&query_place_id=ChIJR94Nv3qprI8R9JQwu86Ww6I" target="_blank" rel="noopener" onclick="event.stopPropagation()">&#128205; Panamá, Panama</a>
+          <button class="back-btn" onclick="event.stopPropagation(); this.closest('.card').classList.remove('flipped')">&larr; back</button>
+        </div>
+      </div>
+    </article>
+    <article class="card" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-face card-front">
+          <img src="images/3226dae423cb6775.jpg" alt="Lazotea Rooftop">
+          <div class="num">02</div>
+          <h4>Lazotea Rooftop</h4>
+          <span class="tap-hint">tap to read more</span>
+        </div>
+        <div class="card-face card-back">
+          <div class="num">02</div>
+          <h4>Lazotea Rooftop</h4>
+          <p>A popular dining spot known for flavorful dishes like steak and grouper, though some mention inconsistencies. Its rooftop setting with stunning city views is a major highlight, along with attentive service.</p>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Av.+Eloy+Alfaro%2C+Panamá%2C+Panama&query_place_id=ChIJZSlrk8qorI8RlLui8CA3F-k" target="_blank" rel="noopener" onclick="event.stopPropagation()">&#128205; Av. Eloy Alfaro, Panamá, Panama</a>
+          <button class="back-btn" onclick="event.stopPropagation(); this.closest('.card').classList.remove('flipped')">&larr; back</button>
+        </div>
+      </div>
+    </article>
+    <article class="card" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-face card-front">
+          <img src="images/casacasco-ideal-para.jpg" alt="Casa Casco">
+          <div class="num">03</div>
+          <h4>Casa Casco</h4>
+          <span class="tap-hint">tap to read more</span>
+        </div>
+        <div class="card-face card-back">
+          <div class="num">03</div>
+          <h4>Casa Casco</h4>
+          <p>Casa Casco is a five-level dining and entertainment venue in Casco Viejo, known for its cosmopolitan vibe, mixology, and panoramic views.</p>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=C.+10+Oeste%2C+Casco+Viejo%2C+Panamá%2C+Panama&query_place_id=ChIJkYF9RjWvrI8RBY-0Ny-sAmo" target="_blank" rel="noopener" onclick="event.stopPropagation()">&#128205; C. 10 Oeste, Casco Viejo, Panamá, Panama</a>
+          <button class="back-btn" onclick="event.stopPropagation(); this.closest('.card').classList.remove('flipped')">&larr; back</button>
+        </div>
+      </div>
+    </article>
+    <article class="card" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-face card-front">
+          <img src="images/calle-dragones-el-iconico.jpg" alt="La Estrella">
+          <div class="num">04</div>
+          <h4>La Estrella</h4>
+          <span class="tap-hint">tap to read more</span>
+        </div>
+        <div class="card-face card-back">
+          <div class="num">04</div>
+          <h4>La Estrella</h4>
+          <p>La Estrella isn&rsquo;t just a bar&mdash;it&rsquo;s an experience blending flavor, history, and ambiance in the heart of the Old Town, surrounded by colonial architecture and the city&rsquo;s bohemian soul.</p>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Av.+Central+España%2C+Casco+Viejo%2C+Panamá%2C+Panama&query_place_id=ChIJ7aCrFReprI8RICU8JJaAhfo" target="_blank" rel="noopener" onclick="event.stopPropagation()">&#128205; Av. Central España, Casco Viejo, Panamá, Panama</a>
+          <button class="back-btn" onclick="event.stopPropagation(); this.closest('.card').classList.remove('flipped')">&larr; back</button>
+        </div>
+      </div>
+    </article>
+    <article class="card" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-face card-front">
+          <img src="images/a-to-z-chef-s-table.jpg" alt="A to Z Chef's Table">
+          <div class="num">05</div>
+          <h4>A to Z Chef&rsquo;s Table</h4>
+          <span class="tap-hint">tap to read more</span>
+        </div>
+        <div class="card-face card-back">
+          <div class="num">05</div>
+          <h4>A to Z Chef&rsquo;s Table</h4>
+          <p>The A to Z Chef&rsquo;s Table is our most intimate and experimental experience. Join our chef&rsquo;s lab with our 10 course seasonal tasting menu.</p>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Avenida+A+entre+calle+7+y+8%2C+Casco+Viejo%2C+Panamá%2C+Panama&query_place_id=ChIJCUvRjP6vrI8RLULBQag7m3s" target="_blank" rel="noopener" onclick="event.stopPropagation()">&#128205; Avenida A entre calle 7 y 8, Casco Viejo, Panamá, Panama</a>
+          <button class="back-btn" onclick="event.stopPropagation(); this.closest('.card').classList.remove('flipped')">&larr; back</button>
+        </div>
+      </div>
+    </article>
+    <article class="card" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-face card-front">
+          <img src="images/calle-dragones-el-iconico.jpg" alt="Calle Dragones">
+          <div class="num">06</div>
+          <h4>Calle Dragones</h4>
+          <span class="tap-hint">tap to read more</span>
+        </div>
+        <div class="card-face card-back">
+          <div class="num">06</div>
+          <h4>Calle Dragones</h4>
+          <p>Panama City&rsquo;s hottest nights start here&mdash;tropical energy, fire-driven fusion, bold steaks, fresh seafood, and live music every night.</p>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Av.+B%2C+Casco+Viejo%2C+Panamá%2C+Panama&query_place_id=ChIJFT2CdZyprI8RC18c7hcQGXE" target="_blank" rel="noopener" onclick="event.stopPropagation()">&#128205; Av. B, Casco Viejo, Panamá, Panama</a>
+          <button class="back-btn" onclick="event.stopPropagation(); this.closest('.card').classList.remove('flipped')">&larr; back</button>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- BRUNCH AND CAFES -->
+<section class="category" id="brunch-cafes" style="border-bottom:none;">
+  <div class="center-title">
+    <h3 style="font-family:var(--font-script); color:var(--green); font-size:clamp(2rem,5vw,2.8rem); font-weight:400;">Brunch and Cafes</h3>
+  </div>
+  <div class="carousel">
+    <article class="card" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-face card-front">
+          <img src="images/nuestros-esponjosos-pancakes.jpg" alt="Mika">
+          <div class="num">01</div>
+          <h4>Mika</h4>
+          <span class="tap-hint">tap to read more</span>
+        </div>
+        <div class="card-face card-back">
+          <div class="num">01</div>
+          <h4>Mika</h4>
+          <p>A modern and relaxed dining experience with well-presented dishes and a diverse menu. Guests highlight the good food, fair prices, and pleasant atmosphere, though service can sometimes be a bit slow.</p>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Santa+María+Plaza%2C+Panamá%2C+Panama&query_place_id=ChIJ44lySwWrrI8RIHp9RgA-zeI" target="_blank" rel="noopener" onclick="event.stopPropagation()">&#128205; Santa María Plaza, Panamá, Panama</a>
+          <button class="back-btn" onclick="event.stopPropagation(); this.closest('.card').classList.remove('flipped')">&larr; back</button>
+        </div>
+      </div>
+    </article>
+    <article class="card" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-face card-front">
+          <img src="images/cafe-lavanda-restaurant.jpg" alt="Café Lavanda">
+          <div class="num">02</div>
+          <h4>Caf&eacute; Lavanda</h4>
+          <span class="tap-hint">tap to read more</span>
+        </div>
+        <div class="card-face card-back">
+          <div class="num">02</div>
+          <h4>Caf&eacute; Lavanda</h4>
+          <p>Caf&eacute; Lavanda is an all-day brunch destination in Panama offering breakfast, desserts, afternoon tea, and cocktails&mdash;celebrating life with calm, flavor, and beauty through the ritual of sharing good food, flowers, and moments that turn into memories.</p>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Av.+los+Fundadores+206%2C+Panamá%2C+Panama&query_place_id=ChIJh_sRFnWprI8RrdiCWS2x1qo" target="_blank" rel="noopener" onclick="event.stopPropagation()">&#128205; Av. los Fundadores 206, Panamá, Panama</a>
+          <button class="back-btn" onclick="event.stopPropagation(); this.closest('.card').classList.remove('flipped')">&larr; back</button>
+        </div>
+      </div>
+    </article>
+    <article class="card" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-face card-front">
+          <img src="images/cold-brew.jpg" alt="Café Unido">
+          <div class="num">03</div>
+          <h4>Caf&eacute; Unido (multiple locations)</h4>
+          <span class="tap-hint">tap to read more</span>
+        </div>
+        <div class="card-face card-back">
+          <div class="num">03</div>
+          <h4>Caf&eacute; Unido (multiple locations)</h4>
+          <p>Caf&eacute; Unido is a direct-trade, 3rd wave coffee shop serving coffee from the best farms in Panam&aacute;. From single origin cappuccinos to exclusive Geisha pour overs. Caf&eacute; Unido offers a great breakfast menu and great lunch and dinner options for everyone.</p>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=C.+9a+Oeste%2C+Casco+Viejo%2C+Panamá%2C+Panama&query_place_id=ChIJwzdhrcqorI8RGs4ZmYZiaK4" target="_blank" rel="noopener" onclick="event.stopPropagation()">&#128205; C. 9a Oeste, Casco Viejo, Panamá, Panama</a>
+          <button class="back-btn" onclick="event.stopPropagation(); this.closest('.card').classList.remove('flipped')">&larr; back</button>
+        </div>
+      </div>
+    </article>
+    <article class="card" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-face card-front">
+          <img src="images/croissantconsalmonahumado.jpg" alt="Al Alma Casco Antiguo">
+          <div class="num">04</div>
+          <h4>Al Alma Casco Antiguo</h4>
+          <span class="tap-hint">tap to read more</span>
+        </div>
+        <div class="card-face card-back">
+          <div class="num">04</div>
+          <h4>Al Alma Casco Antiguo</h4>
+          <p>Al Alma Caf&eacute; is a charming brunch spot located in the heart of Casco Antiguo, offering beautiful views of the main square. It&rsquo;s known for its relaxed atmosphere, great coffee, and well-presented breakfast dishes.</p>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Plaza+de+la+Independencia%2C+C.+5a+Este%2C+Panamá%2C+Panama&query_place_id=ChIJW89JheiprI8RHCt4H3wHQ1Y" target="_blank" rel="noopener" onclick="event.stopPropagation()">&#128205; Plaza de la Independencia, C. 5a Este, Panamá, Panama</a>
+          <button class="back-btn" onclick="event.stopPropagation(); this.closest('.card').classList.remove('flipped')">&larr; back</button>
+        </div>
+      </div>
+    </article>
+    <article class="card" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-face card-front">
+          <img src="images/benedictinos-con-jamon.jpg" alt="Michael's Restaurant">
+          <div class="num">05</div>
+          <h4>Michael&rsquo;s Restaurant</h4>
+          <span class="tap-hint">tap to read more</span>
+        </div>
+        <div class="card-face card-back">
+          <div class="num">05</div>
+          <h4>Michael&rsquo;s Restaurant</h4>
+          <p>Popular brunch spot known for its generous portions, friendly service, and relaxed atmosphere. The menu features American-style breakfast classics like pancakes, eggs Benedict, and waffles, along with great coffee and drinks.</p>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=C.+47+Este%2C+Panamá%2C+Panama&query_place_id=ChIJXQ7tOzGprI8RtMDmeRjjBdI" target="_blank" rel="noopener" onclick="event.stopPropagation()">&#128205; C. 47 Este, Panamá, Panama</a>
+          <button class="back-btn" onclick="event.stopPropagation(); this.closest('.card').classList.remove('flipped')">&larr; back</button>
+        </div>
+      </div>
+    </article>
+    <article class="card" onclick="this.classList.toggle('flipped')">
+      <div class="card-inner">
+        <div class="card-face card-front">
+          <img src="images/great-breakfast-and-brunch.jpg" alt="Casi Cielo Brunch & Coffee">
+          <div class="num">06</div>
+          <h4>Casi Cielo Brunch &amp; Coffee</h4>
+          <span class="tap-hint">tap to read more</span>
+        </div>
+        <div class="card-face card-back">
+          <div class="num">06</div>
+          <h4>Casi Cielo Brunch &amp; Coffee</h4>
+          <p>Casi Cielo is a cozy brunch spot known for its relaxed vibe and quality coffee. The menu features classic breakfast options like pancakes, toast, and eggs, all nicely presented.</p>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=PanCanal+Plaza+Building%2C+Panamá%2C+Panama&query_place_id=ChIJeZAuBX6nrI8R9nLOd8vDogE" target="_blank" rel="noopener" onclick="event.stopPropagation()">&#128205; PanCanal Plaza Building, Panamá, Panama</a>
+          <button class="back-btn" onclick="event.stopPropagation(); this.closest('.card').classList.remove('flipped')">&larr; back</button>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-nav">
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="wedding-week.html">Wedding Week</a>
+    <a href="attire.html">Attire</a>
+    <a href="rsvp-vikas-roshni.html" target="_blank">RSVP</a>
+    <a href="#top">Travel Tips</a>
+  </div>
+</footer>
+
+
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const drawer = document.getElementById('navDrawer');
+  const drawerClose = document.getElementById('drawerClose');
+  hamburger.addEventListener('click', () => { hamburger.classList.add('open'); drawer.classList.add('open'); });
+  function closeMenu() { hamburger.classList.remove('open'); drawer.classList.remove('open'); }
+  drawerClose.addEventListener('click', closeMenu);
+  const navBarMobile = document.getElementById('navBarMobile');
+  const desktopNav = document.getElementById('desktopNav');
+  window.addEventListener('scroll', () => {
+    const scrolled = window.scrollY > 10;
+    navBarMobile.classList.toggle('scrolled', scrolled);
+    desktopNav.classList.toggle('scrolled', scrolled);
+  });
+</script>
+</body>
+</html>
