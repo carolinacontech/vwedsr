@@ -54,6 +54,12 @@
     }
 
     .desktop-nav a:hover { color: var(--gold); }
+    .desktop-nav.scrolled {
+      background: rgba(255, 248, 240, 0.95);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+      transition: background 0.3s ease, backdrop-filter 0.3s ease;
+    }
     .nav-rsvp { font-family: 'Great Vibes', cursive !important; font-size: 32px !important; letter-spacing: 0 !important; text-transform: lowercase; }
 
     /* ── HAMBURGER ── */
@@ -332,8 +338,11 @@
     drawerClose.addEventListener('click', closeMenu);
 
     const navBarMobile = document.getElementById('navBarMobile');
+    const desktopNav = document.querySelector('.desktop-nav');
     window.addEventListener('scroll', () => {
-      navBarMobile.classList.toggle('scrolled', window.scrollY > 10);
+      const scrolled = window.scrollY > 10;
+      navBarMobile.classList.toggle('scrolled', scrolled);
+      desktopNav.classList.toggle('scrolled', scrolled);
     });
   </script>
 
