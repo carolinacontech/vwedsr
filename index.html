@@ -422,7 +422,7 @@
     const drawer = document.getElementById('navDrawer');
     const drawerClose = document.getElementById('drawerClose');
 
-    hamburger.addEventListener('click', () => {
+    hamburger.addEventListener('click', () => { if (hamburger.classList.contains('open')) { closeMenu(); return; }
       hamburger.classList.add('open');
       drawer.classList.add('open');
     });
