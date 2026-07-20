@@ -177,7 +177,7 @@
 
     .attire-title {
       font-family: 'Adelia', cursive;
-      font-size: 72px;
+      font-size: 54px;
       font-weight: 400;
       font-synthesis: none;
       -webkit-font-smoothing: antialiased;
@@ -290,8 +290,8 @@
 
     .attire-pdf-btn {
       display: inline-block;
-      background: var(--dark);
-      color: #f5ede3;
+      background: var(--gold);
+      color: #fff;
       font-family: 'Montserrat', sans-serif;
       font-size: 10px;
       font-weight: 500;
@@ -304,7 +304,7 @@
       transition: background 0.2s;
     }
 
-    .attire-pdf-btn:hover { background: #1a1410; }
+    .attire-pdf-btn:hover { background: #a8893e; }
 
     .attire-inspiration {
       font-family: 'Montserrat', sans-serif;
@@ -425,7 +425,7 @@
   </button>
 
   <div class="nav-drawer" id="navDrawer">
-    <button class="drawer-close" id="drawerClose" aria-label="Cerrar">✕</button>
+    
     <img src="vr-logo.webp" alt="VR" style="width:80px;height:80px;object-fit:contain;margin-bottom:16px;" />
     <a href="index.html" onclick="closeMenu()">HOME</a>
     <a href="about.html" onclick="closeMenu()">ABOUT US</a>
@@ -521,7 +521,6 @@
   <script>
     const hamburger = document.getElementById('hamburger');
     const drawer = document.getElementById('navDrawer');
-    const drawerClose = document.getElementById('drawerClose');
 
     hamburger.addEventListener('click', () => { if (hamburger.classList.contains('open')) { closeMenu(); return; }
       hamburger.classList.add('open');
@@ -533,7 +532,6 @@
       drawer.classList.remove('open');
     }
 
-    drawerClose.addEventListener('click', closeMenu);
 
     // Modal
     const modal = document.getElementById('attireModal');
