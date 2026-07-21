@@ -43,7 +43,8 @@
     width: 40px; height: 40px; cursor: pointer;
     background: none; border: none; padding: 0; align-items: center;
   }
-  .hamburger span { display: block; width: 26px; height: 2px; background: #3a3028; border-radius: 2px; transition: all 0.3s ease; }
+  .hamburger span { display: block; width: 26px; height: 2px; background: #fff; border-radius: 2px; transition: all 0.3s ease; }
+  .nav-bar-mobile.scrolled ~ .hamburger span { background: #3a3028; }
   .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
   .hamburger.open span:nth-child(2) { opacity: 0; }
   .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
