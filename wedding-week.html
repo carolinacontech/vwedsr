@@ -215,8 +215,8 @@
       margin-top: 0;
       margin-left: auto;
       margin-right: auto;
-      width: 52%;
-      max-width: 540px;
+      width: 72%;
+      max-width: 740px;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 14px;
@@ -226,18 +226,25 @@
 
     .ww-card {
       position: relative;
-      padding: 16px 14px 24px;
+      aspect-ratio: 1026 / 601;
+      padding: 8% 9%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      background: #FBEFE3;
-      border: 1.5px solid var(--gold);
-      border-radius: 10px;
-      box-shadow: inset 0 0 0 5px #FBEFE3, inset 0 0 0 7px rgba(210,120,130,0.55);
       cursor: pointer;
       transition: opacity 0.2s;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+      background-color: transparent;
+      background-image: url('card-border.svg');
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
     }
 
     .ww-card:hover { opacity: 0.85; }
-
     .ww-card::before { content: none; }
     .ww-card::after { content: none; }
 
@@ -249,19 +256,19 @@
 
     .ww-card-date {
       font-family: 'Montserrat', sans-serif;
-      font-size: 30px;
-      font-weight: 400;
+      font-size: 42px;
+      font-weight: 300;
       color: var(--green);
       line-height: 1;
     }
 
     .ww-card-month {
       font-family: 'Montserrat', sans-serif;
-      font-size: 14px;
+      font-size: 22px;
       font-weight: 300;
       color: var(--green);
-      margin-top: 4px;
-      letter-spacing: 1px;
+      margin-top: 6px;
+      letter-spacing: 2px;
     }
 
     .ww-card-diamond {
@@ -280,8 +287,8 @@
       margin-top: 0;
       margin-left: auto;
       margin-right: auto;
-      width: 45%;
-      max-width: 380px;
+      width: 58%;
+      max-width: 520px;
       padding-bottom: 60px;
       z-index: 2;
     }
@@ -302,23 +309,26 @@
     }
 
     .ww-event {
-      background: transparent;
-      border: 1.5px solid var(--gold);
-      border-radius: 8px;
-      padding: 14px 16px 12px;
-      margin-bottom: 12px;
+      background-image: url('card-border.svg');
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      background-color: transparent;
+      border: none;
+      border-radius: 0;
+      padding: 14% 10% 6% 8%;
+      margin-bottom: 16px;
       text-align: center;
       position: relative;
+      height: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      overflow: hidden;
     }
 
-    .ww-event::before {
-      content: '';
-      position: absolute;
-      inset: 5px;
-      border: 1px solid rgba(210, 120, 130, 0.6);
-      border-radius: 4px;
-      pointer-events: none;
-    }
+    .ww-event::before { content: none; }
 
     .ww-event-name {
       font-family: 'Montserrat', sans-serif;
@@ -335,7 +345,7 @@
       font-weight: 400;
       color: var(--dark);
       letter-spacing: 0.5px;
-      margin-bottom: 6px;
+      margin-bottom: 2px;
       position: relative;
     }
 
@@ -344,7 +354,7 @@
       font-size: 15px;
       color: #6b5a4e;
       line-height: 1.6;
-      margin-bottom: 12px;
+      margin-bottom: 8px;
       position: relative;
     }
 
@@ -356,7 +366,7 @@
       flex-direction: column;
       align-items: flex-start;
       gap: 5px;
-      margin-bottom: 8px;
+      margin-bottom: 4px;
       min-width: 58%;
       position: relative;
     }
@@ -374,7 +384,7 @@
     .ww-event-attire {
       display: block;
       width: fit-content;
-      margin: 8px auto 0;
+      margin: 4px auto 0;
       border: 1.5px solid var(--dark);
       border-radius: 40px;
       padding: 4px 18px;
@@ -420,7 +430,7 @@
       .nav-bar-mobile { display: block; }
 
       .ww-hero-desktop { display: none; }
-      .ww-hero-mobile  { display: block; }
+      .ww-hero-mobile  { display: block; padding-top: 8px; }
 
       .ww-section {
         background: #FBF2E9;
@@ -431,8 +441,8 @@
       }
 
       .ww-logo-row {
-        margin-top: 20px;
-        margin-bottom: 20px;
+        margin-top: 10px;
+        margin-bottom: 4px;
         gap: 0;
       }
 
@@ -446,28 +456,157 @@
         margin-left: -2vw;
       }
 
-      .ww-cards {
-        width: 84%;
-        gap: 12px;
-        padding-bottom: 32px;
-        margin-top: 0;
+      /* Pill tab bar */
+      #wwCards {
+        display: flex !important;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 6px;
+        width: auto !important;
+        max-width: none;
+        padding: 6px 16px 2px;
       }
 
-      .ww-card { padding: 16px 10px 26px; }
-      .ww-card-date { font-size: 20px; }
-      .ww-card-month { font-size: 13px; }
+      .ww-card {
+        aspect-ratio: unset;
+        height: auto;
+        width: calc(50% - 3px);
+        flex-direction: row;
+        justify-content: center;
+        gap: 4px;
+        align-items: baseline;
+        padding: 9px 14px;
+        background-image: none !important;
+        background-color: transparent;
+        border: 1.5px solid rgba(58, 48, 40, 0.35);
+        border-radius: 40px;
+        transition: all 0.2s;
+      }
+
+      .ww-card-diamond { display: none; }
+      .ww-card-date  { font-size: 14px; color: var(--dark); }
+      .ww-card-month { font-size: 12px; color: var(--dark); letter-spacing: normal; margin-top: 0; }
+
+      .ww-card.active-tab {
+        background-color: var(--dark);
+        border-color: var(--dark);
+        opacity: 1;
+      }
+      .ww-card.active-tab .ww-card-date,
+      .ww-card.active-tab .ww-card-month { color: #F5EBD9; }
+      .ww-card:not(.active-tab) { opacity: 0.5; }
 
       .ww-detail {
-        width: 88%;
-        margin-top: 0;
-        padding-bottom: 40px;
+        display: none;
+        width: 88% !important;
+        max-width: 380px !important;
+        margin: 0 auto;
+        padding: 0 0 40px;
+      }
+      .ww-detail.active-day { display: block !important; }
+      .ww-detail-title { display: none; }
+      .ww-back-btn { display: none; }
+
+      .ww-event {
+        height: 220px;
+        padding: 34px 32px 14px 22px;
+        margin-bottom: -18px;
+        overflow: visible;
       }
 
-      .ww-detail-title { font-size: 22px; margin-top: 24px; }
-      .ww-event-name { font-size: 22px; }
-      .ww-event-info { min-width: 72%; }
+      .ww-event-name     { font-size: 18px; margin-bottom: 1px; }
+      .ww-event-subtitle { font-size: 11px; margin-bottom: 1px; }
+      .ww-event-desc     { font-size: 12px; margin-bottom: 4px; line-height: 1.4; }
+      .ww-event-info     { padding: 6px 14px; gap: 3px; margin-bottom: 3px; min-width: 65%; }
+      .ww-event-info span { font-size: 11px; gap: 4px; }
+      .ww-event-attire   { font-size: 11px; padding: 3px 12px; margin-top: 2px; }
 
-      .ww-flowers-divider { width: 100vw; }
+      .ww-flowers-divider { width: 100vw; margin-top: -85px; }
+    }
+
+    /* ── DESKTOP LAYOUT ── */
+    @media (min-width: 768px) {
+      .ww-hero-desktop { /* natural height — no crop */ }
+
+
+      .ww-layout { display: block; }
+      .ww-detail-area { display: block; }
+
+      /* ── Pill tab bar ── */
+      #wwCards {
+        display: flex !important;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        width: auto !important;
+        max-width: none;
+        padding: 20px 60px 28px;
+      }
+
+      .ww-card {
+        aspect-ratio: unset;
+        height: auto;
+        width: auto;
+        flex-direction: row;
+        gap: 6px;
+        align-items: baseline;
+        padding: 11px 28px;
+        background-image: none !important;
+        background-color: transparent;
+        border: 1.5px solid rgba(58, 48, 40, 0.35);
+        border-radius: 40px;
+        transition: all 0.2s;
+      }
+
+      .ww-card-diamond { display: none; }
+      .ww-card-date  { font-size: 16px; color: var(--dark); }
+      .ww-card-month { font-size: 14px; color: var(--dark); }
+
+      .ww-card.active-tab {
+        background-color: var(--dark);
+        border-color: var(--dark);
+        opacity: 1;
+      }
+      .ww-card.active-tab .ww-card-date,
+      .ww-card.active-tab .ww-card-month { color: #F5EBD9; }
+
+      .ww-card:not(.active-tab) { opacity: 0.5; }
+      .ww-card:not(.active-tab):hover { opacity: 0.8; }
+
+      /* ── Events single column ── */
+      .ww-detail {
+        display: none;
+        width: auto !important;
+        max-width: 420px !important;
+        margin: 0 auto;
+        padding: 0 0 60px;
+      }
+
+      .ww-detail.active-day { display: block !important; }
+
+      .ww-detail-title { display: none; }
+
+      .ww-back-btn { display: none; }
+
+      .ww-event {
+        height: 260px;
+        padding: 22px 22px 8px 15px;
+        margin-bottom: 14px;
+        overflow: visible;
+      }
+
+
+      .ww-event-name     { font-size: 20px; margin-bottom: 1px; }
+      .ww-event-subtitle { font-size: 12px; margin-bottom: 1px; }
+      .ww-event-desc     { font-size: 13px; margin-bottom: 4px; line-height: 1.5; }
+      .ww-event-info     { padding: 5px 10px; gap: 3px; margin-bottom: 3px; }
+      .ww-event-info span { font-size: 12px; gap: 4px; }
+      .ww-event-attire   { font-size: 12px; padding: 3px 10px; margin-top: 2px; }
+
+      .ww-flowers-divider { margin-top: -200px; }
     }
   </style>
 </head>
@@ -508,6 +647,7 @@
       <span class="ww-celebrations">Celebrations</span>
     </div>
 
+    <div class="ww-layout">
     <div class="ww-cards" id="wwCards">
       <div class="ww-card" data-day="13">
         <div class="ww-card-date">13th</div>
@@ -531,13 +671,14 @@
       </div>
     </div>
 
+    <div class="ww-detail-area" id="wwDetailArea">
     <!-- ── 13TH AUGUST ── -->
     <div class="ww-detail" id="detail-13">
       <div class="ww-detail-title">13th August</div>
 
       <div class="ww-event">
         <div class="ww-event-name">Breakfast</div>
-        <div class="ww-event-desc">Fuel up — the celebrations are just getting started!</div>
+        <div class="ww-event-desc">Fuel up — the celebrations<br>are just getting started!</div>
         <div class="ww-event-info">
           <span>🕐 6:00 AM – 10:30 AM</span>
           <span>📍 Pacifica</span>
@@ -546,7 +687,7 @@
 
       <div class="ww-event">
         <div class="ww-event-name">Mata ki Chowki</div>
-        <div class="ww-event-desc">Join us as we begin the celebrations with blessings.</div>
+        <div class="ww-event-desc">Join us as we begin the celebrations<br>with blessings.</div>
         <div class="ww-event-info">
           <span>🕐 12:00 PM</span>
           <span>📍 Gardenia</span>
@@ -556,7 +697,7 @@
 
       <div class="ww-event">
         <div class="ww-event-name">Ring Ceremony</div>
-        <div class="ww-event-desc">Followed by cocktails and dinner. A sparkling moment as we promise forever.</div>
+        <div class="ww-event-desc">Followed by cocktails and dinner.<br>A sparkling moment as we promise forever.</div>
         <div class="ww-event-info">
           <span>🕐 6:00 PM</span>
           <span>📍 The Westin Plaza</span>
@@ -574,7 +715,7 @@
 
       <div class="ww-event">
         <div class="ww-event-name">Breakfast</div>
-        <div class="ww-event-desc">Fuel up — the celebrations are just getting started!</div>
+        <div class="ww-event-desc">Fuel up — the celebrations<br>are just getting started!</div>
         <div class="ww-event-info">
           <span>🕐 6:00 AM – 10:30 AM</span>
           <span>📍 Pacifica</span>
@@ -584,7 +725,7 @@
       <div class="ww-event">
         <div class="ww-event-name">Ghari Pooja</div>
         <div class="ww-event-subtitle">Karishma (Renu) &amp; Sunil</div>
-        <div class="ww-event-desc">Family prayers for love, prosperity and joyful beginnings.</div>
+        <div class="ww-event-desc">Family prayers for love, prosperity<br>and joyful beginnings.</div>
         <div class="ww-event-info">
           <span>🕐 9:00 AM</span>
           <span>📍 Gardenia</span>
@@ -595,7 +736,7 @@
       <div class="ww-event">
         <div class="ww-event-name">Ghari Pooja</div>
         <div class="ww-event-subtitle">Hiru &amp; Jai</div>
-        <div class="ww-event-desc">A beautiful tradition celebrating family, unity, and a prosperous beginning.</div>
+        <div class="ww-event-desc">A beautiful tradition celebrating family,<br>unity, and a prosperous beginning.</div>
         <div class="ww-event-info">
           <span>🕐 10:00 AM</span>
           <span>📍 Cypress</span>
@@ -605,7 +746,7 @@
 
       <div class="ww-event">
         <div class="ww-event-name">Mehendi</div>
-        <div class="ww-event-desc">Where the henna gets darker and the laughter gets louder.</div>
+        <div class="ww-event-desc">Where the henna gets darker<br>and the laughter gets louder.</div>
         <div class="ww-event-info">
           <span>🕐 12:00 PM</span>
           <span>📍 Poolside</span>
@@ -633,7 +774,7 @@
 
       <div class="ww-event">
         <div class="ww-event-name">Breakfast</div>
-        <div class="ww-event-desc">Refuel and recharge. The wedding festivities continue!</div>
+        <div class="ww-event-desc">Refuel and recharge.<br>The wedding festivities continue!</div>
         <div class="ww-event-info">
           <span>🕐 6:00 AM – 10:30 AM</span>
           <span>📍 Pacifica</span>
@@ -642,7 +783,7 @@
 
       <div class="ww-event">
         <div class="ww-event-name">Baarat</div>
-        <div class="ww-event-desc">The dhol is calling. Dance your way to the mandap!</div>
+        <div class="ww-event-desc">The dhol is calling.<br>Dance your way to the mandap!</div>
         <div class="ww-event-info">
           <span>🕐 12:00 PM</span>
           <span>📍 Main Lobby</span>
@@ -662,7 +803,7 @@
 
       <div class="ww-event">
         <div class="ww-event-name">Cocktails &amp; Reception</div>
-        <div class="ww-event-desc">Let's celebrate love, laughter, and happily ever after.</div>
+        <div class="ww-event-desc">Let's celebrate love, laughter,<br>and happily ever after.</div>
         <div class="ww-event-info">
           <span>🕐 7:30 PM</span>
           <span>📍 Grand Ballroom</span>
@@ -692,6 +833,9 @@
       <img src="flowers-divider.webp" class="ww-flowers-divider" alt="" />
     </div>
 
+    </div><!-- /ww-detail-area -->
+    </div><!-- /ww-layout -->
+
   </div>
 
   <script>
@@ -717,23 +861,25 @@
       desktopNav.classList.toggle('scrolled', scrolled);
     });
 
-    document.querySelectorAll('.ww-card').forEach(card => {
-      card.addEventListener('click', () => {
-        const day = card.dataset.day;
-        document.getElementById('wwCards').style.display = 'none';
-        document.querySelector('.ww-logo-row').style.display = 'none';
-        document.querySelectorAll('.ww-detail').forEach(d => d.style.display = 'none');
-        document.getElementById('detail-' + day).style.display = 'block';
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+    function isDesktop() { return window.innerWidth >= 768; }
+
+    function selectDay(day) {
+      document.querySelectorAll('.ww-card').forEach(c => c.classList.remove('active-tab'));
+      document.querySelector('.ww-card[data-day="' + day + '"]').classList.add('active-tab');
+      document.querySelectorAll('.ww-detail').forEach(d => {
+        d.classList.remove('active-day');
+        d.style.display = 'none';
       });
+      const detail = document.getElementById('detail-' + day);
+      detail.classList.add('active-day');
+      detail.style.display = 'block';
+    }
+
+    document.querySelectorAll('.ww-card').forEach(card => {
+      card.addEventListener('click', () => { selectDay(card.dataset.day); });
     });
 
-    function showCards() {
-      document.querySelectorAll('.ww-detail').forEach(d => d.style.display = 'none');
-      document.getElementById('wwCards').style.display = 'grid';
-      document.querySelector('.ww-logo-row').style.display = 'flex';
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+    selectDay('13');
   </script>
 
 </body>

@@ -197,8 +197,18 @@
       font-family: 'Great Vibes', cursive;
       font-size: 36px;
       color: var(--green);
-      margin-top: 32px;
+      margin-top: 24px;
       line-height: 1.2;
+      text-align: center;
+    }
+
+    .about-signature-divider {
+      text-align: center;
+      color: var(--gold);
+      font-size: 10px;
+      margin-top: 14px;
+      margin-bottom: 4px;
+      letter-spacing: 6px;
     }
 
     /* Desktop: side by side */
@@ -256,21 +266,21 @@
       .hamburger { display: flex; }
       .nav-bar-mobile { display: block; }
 
-      .about { padding-top: 70px; }
+      .about { padding-top: 56px; }
 
       .about-hero {
         flex-direction: column;
-        gap: 32px;
-        padding: 40px 0 0;
+        gap: 20px;
+        padding: 0;
       }
 
       .about-text-col { padding: 0 6%; }
 
-      .about-main-photo { max-width: 100%; }
+      .about-main-photo { max-width: 100%; order: -1; }
       .about-main-photo img { height: 360px; border-radius: 0; }
 
-      .about-title { font-size: 47px; }
-      .about-text p { font-size: 14px; }
+      .about-title { font-size: 47px; margin-top: 40px; }
+      .about-text p { font-size: 14px; color: var(--green); }
 
       .about-grid-wrap {
         padding: 0 0 60px;
@@ -318,6 +328,7 @@
         <p>After Portugal, we found every excuse to see each other again, meeting in different corners of Europe and the US, squeezing in long weekends, and spontaneous trips. What began as a spark turned into a story we couldn't wait to keep writing together.</p>
         <p>In August, in sunny Tenerife, Vikas proposed overlooking a beautiful sunset. It was a calm, unforgettable moment, and it felt like the perfect way to begin this next chapter together.</p>
         <p>Now, we can't wait to begin our next chapter and celebrate our love with all of you in Panama — bringing together our favourite people, vibrant traditions, and a whole lot of joy in one unforgettable place.</p>
+        <div class="about-signature-divider">✦</div>
         <p class="about-signature">Vikas &amp; Roshni</p>
       </div>
       <div class="about-main-photo">
