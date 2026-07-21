@@ -314,11 +314,7 @@
     flex-shrink:0;
   }
   .card-front .num{
-    font-family:var(--font-adelia);
-    color:var(--green);
-    font-size:1.3rem;
-    line-height:1;
-    padding:.6rem 0 .2rem 1rem;
+    display: none;
   }
   .card-front h4{
     font-family:var(--font-sans);
@@ -411,9 +407,12 @@
     font-size:.78rem;
   }
 
+  .carousel-pad{ display:none; flex-shrink:0; }
   @media (max-width:640px){
     body{ font-size:17px; }
     .carousel{ gap:1rem; }
+    .carousel-pad{ display:block; min-width:24px; }
+    .category .center-title{ padding-left:24px; }
     .card{ flex-basis:76vw; }
   }
 
@@ -555,7 +554,7 @@
   <div class="center-title">
     <h3 style="font-family:var(--font-adelia); color:var(--green); font-size:clamp(1.3rem,3vw,1.9rem); font-weight:400;">Things to Do</h3>
   </div>
-  <div class="carousel">
+  <div class="carousel"><div class="carousel-pad"></div>
     <article class="card" onclick="this.classList.toggle('flipped')">
       <div class="card-inner">
         <div class="card-face card-front">
@@ -666,7 +665,7 @@
   <div class="center-title">
     <h3 style="font-family:var(--font-adelia); color:var(--green); font-size:clamp(1.3rem,3vw,1.9rem); font-weight:400;">Beach &amp; Island Experiences</h3>
   </div>
-  <div class="carousel">
+  <div class="carousel"><div class="carousel-pad"></div>
     <article class="card" onclick="this.classList.toggle('flipped')">
       <div class="card-inner">
         <div class="card-face card-front">
@@ -760,7 +759,7 @@
   <div class="center-title">
     <h3 style="font-family:var(--font-adelia); color:var(--green); font-size:clamp(1.3rem,3vw,1.9rem); font-weight:400;">Dining</h3>
   </div>
-  <div class="carousel">
+  <div class="carousel"><div class="carousel-pad"></div>
     <article class="card" onclick="this.classList.toggle('flipped')">
       <div class="card-inner">
         <div class="card-face card-front">
@@ -888,7 +887,7 @@
   <div class="center-title">
     <h3 style="font-family:var(--font-adelia); color:var(--green); font-size:clamp(1.3rem,3vw,1.9rem); font-weight:400;">City Hotspots</h3>
   </div>
-  <div class="carousel">
+  <div class="carousel"><div class="carousel-pad"></div>
     <article class="card" onclick="this.classList.toggle('flipped')">
       <div class="card-inner">
         <div class="card-face card-front">
@@ -999,7 +998,7 @@
   <div class="center-title">
     <h3 style="font-family:var(--font-adelia); color:var(--green); font-size:clamp(1.3rem,3vw,1.9rem); font-weight:400;">Brunch and Cafes</h3>
   </div>
-  <div class="carousel">
+  <div class="carousel"><div class="carousel-pad"></div>
     <article class="card" onclick="this.classList.toggle('flipped')">
       <div class="card-inner">
         <div class="card-face card-front">
