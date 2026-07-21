@@ -419,8 +419,6 @@
   .cat-arrow{ display:none; }
   @media (max-width:640px){
     body{ font-size:17px; }
-    .band{ position:sticky; top:56px; z-index:150; padding:2rem 6vw 1.8rem; }
-    .band h2, .band p{ display:none; }
     .category-nav{ max-width:none; gap:.6rem; }
     .category-nav a{ font-size:.62rem; padding:.65rem .8rem; letter-spacing:.08em; white-space:nowrap; }
     .category-nav a.active-cat{ background:#fff; color:var(--ink); }
@@ -1174,6 +1172,7 @@
       section.appendChild(btn);
 
       const carousel = section.querySelector('.carousel');
+      const cardStep = () => (carousel.querySelector('.card')?.offsetWidth || 285) + 16;
 
       function updateArrow() {
         const atEnd = carousel.scrollLeft >= carousel.scrollWidth - carousel.clientWidth - 10;
@@ -1185,11 +1184,13 @@
       btn.addEventListener('click', () => {
         if (btn.classList.contains('arrow-left')) {
           carousel.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+          carousel.scrollBy({ left: cardStep(), behavior: 'smooth' });
         }
       });
     });
 
-    function selectCat(href) {
+    function selectCat(href, scroll) {
       catSections.forEach(s => s.classList.remove('active'));
       catLinks.forEach(l => l.classList.remove('active-cat'));
       const target = document.querySelector(href);
@@ -1200,6 +1201,7 @@
         carousel.scrollLeft = 0;
         const btn = target.querySelector('.cat-arrow');
         if (btn) btn.classList.remove('arrow-left');
+        if (scroll) requestAnimationFrame(() => target.scrollIntoView({ behavior: 'smooth' }));
       }
       if (link) link.classList.add('active-cat');
     }
@@ -1207,11 +1209,11 @@
     catLinks.forEach(link => {
       link.addEventListener('click', e => {
         e.preventDefault();
-        selectCat(link.getAttribute('href'));
+        selectCat(link.getAttribute('href'), true);
       });
     });
 
-    selectCat('#things-to-do');
+    selectCat('#things-to-do', false);
   }
 </script>
 </body>
