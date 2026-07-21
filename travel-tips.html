@@ -408,12 +408,44 @@
   }
 
   .carousel-pad{ display:none; flex-shrink:0; }
+  @keyframes bounce-arrow {
+    0%, 100% { transform: rotate(-45deg) translateX(0); opacity: 0.5; }
+    50% { transform: rotate(-45deg) translateX(5px); opacity: 0.9; }
+  }
+  @keyframes bounce-arrow-left {
+    0%, 100% { transform: rotate(135deg) translateX(0); opacity: 0.5; }
+    50% { transform: rotate(135deg) translateX(-5px); opacity: 0.9; }
+  }
+  .cat-arrow{ display:none; }
   @media (max-width:640px){
     body{ font-size:17px; }
-    .carousel{ gap:1rem; }
-    .carousel-pad{ display:block; min-width:24px; }
-    .category .center-title{ padding-left:24px; }
-    .card{ flex-basis:76vw; }
+    .band{ position:sticky; top:56px; z-index:150; padding:2rem 6vw 1.8rem; }
+    .band h2, .band p{ display:none; }
+    .category-nav{ max-width:none; gap:.6rem; }
+    .category-nav a{ font-size:.62rem; padding:.65rem .8rem; letter-spacing:.08em; white-space:nowrap; }
+    .category-nav a.active-cat{ background:#fff; color:var(--ink); }
+    .category{ display:none; }
+    .category.active{
+      height:100dvh; padding:64px 0 32px;
+      display:flex; flex-direction:column; justify-content:center; gap:1.2rem; border-bottom:none;
+    }
+    .cat-arrow{
+      display:block; background:none; border:none; cursor:pointer;
+      width:34px; height:34px; margin:0 auto; padding:8px; flex-shrink:0;
+    }
+    .cat-arrow::after{
+      content:''; display:block; width:18px; height:18px;
+      border-right:2px solid var(--green); border-bottom:2px solid var(--green);
+      transform:rotate(-45deg); animation:bounce-arrow 1.6s ease-in-out infinite;
+    }
+    .cat-arrow.arrow-left::after{
+      transform:rotate(135deg); animation:bounce-arrow-left 1.6s ease-in-out infinite;
+    }
+    .carousel{ gap:1rem; padding-right:12vw; }
+    .carousel::-webkit-scrollbar{ display:none; }
+    .carousel-pad{ display:block; min-width:12vw; }
+    .category .center-title{ padding-left:12vw; margin-bottom:0; }
+    .card{ flex-basis:76vw; scroll-snap-align:center; height:480px; }
   }
 
   /* Reduced motion */
@@ -1129,6 +1161,58 @@
     navBarMobile.classList.toggle('scrolled', scrolled);
     desktopNav.classList.toggle('scrolled', scrolled);
   });
+
+  // Mobile category tabs + directional arrow
+  if (window.innerWidth <= 640) {
+    const catLinks = document.querySelectorAll('.category-nav a');
+    const catSections = document.querySelectorAll('.category');
+
+    // Inject arrow button into each category
+    catSections.forEach(section => {
+      const btn = document.createElement('button');
+      btn.className = 'cat-arrow';
+      section.appendChild(btn);
+
+      const carousel = section.querySelector('.carousel');
+
+      function updateArrow() {
+        const atEnd = carousel.scrollLeft >= carousel.scrollWidth - carousel.clientWidth - 10;
+        btn.classList.toggle('arrow-left', atEnd);
+      }
+
+      carousel.addEventListener('scroll', updateArrow, { passive: true });
+
+      btn.addEventListener('click', () => {
+        if (btn.classList.contains('arrow-left')) {
+          carousel.scrollTo({ left: 0, behavior: 'smooth' });
+        }
+      });
+    });
+
+    function selectCat(href) {
+      catSections.forEach(s => s.classList.remove('active'));
+      catLinks.forEach(l => l.classList.remove('active-cat'));
+      const target = document.querySelector(href);
+      const link = document.querySelector('.category-nav a[href="' + href + '"]');
+      if (target) {
+        target.classList.add('active');
+        const carousel = target.querySelector('.carousel');
+        carousel.scrollLeft = 0;
+        const btn = target.querySelector('.cat-arrow');
+        if (btn) btn.classList.remove('arrow-left');
+      }
+      if (link) link.classList.add('active-cat');
+    }
+
+    catLinks.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        selectCat(link.getAttribute('href'));
+      });
+    });
+
+    selectCat('#things-to-do');
+  }
 </script>
 </body>
 </html>
